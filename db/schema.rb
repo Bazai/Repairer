@@ -11,7 +11,54 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110920185034) do
+ActiveRecord::Schema.define(:version => 20110921114245) do
+
+  create_table "brands", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "car_models", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "brand_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "car_models", ["brand_id"], :name => "index_car_models_on_brand_id"
+
+  create_table "cars", :force => true do |t|
+    t.string   "name"
+    t.integer  "brand_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "cars", ["brand_id"], :name => "index_cars_on_brand_id"
+
+  create_table "issues", :force => true do |t|
+    t.string   "description"
+    t.integer  "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "production_years", :force => true do |t|
+    t.integer  "year"
+    t.integer  "carmodel_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "production_years", ["carmodel_id"], :name => "index_production_years_on_carmodel_id"
+
+  create_table "production_years_issues", :id => false, :force => true do |t|
+    t.integer "production_year_id"
+    t.integer "issue_id"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email"
