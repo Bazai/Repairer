@@ -5,6 +5,7 @@
 # files.
 
 require 'cucumber/rails'
+require 'spork'
 
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
 # order to ease the transition to Capybara we set the default here. If you'd
@@ -29,13 +30,64 @@ Capybara.default_selector = :css
 #
 ActionController::Base.allow_rescue = false
 
+Spork.prefork do
+  # Раскомментировать это если нужно запустить трейсер, который показывает в милисекундах
+  # какие подгружаются файлы. Необходимо включить в require блок те файлы, которые загружаются
+  # более 100 мс.
+  # module Kernel
+  #       def require_with_trace(*args)
+  #         start = Time.now.to_f
+  #         @indent ||= 0
+  #         @indent += 2
+  #         require_without_trace(*args)
+  #         @indent -= 2
+  #         Kernel::puts "#{' '*@indent}#{((Time.now.to_f - start)*1000).to_i} #{args[0]}"
+  #       end
+  #       alias_method_chain :require, :trace
+  #     end
+  
+  ENV["RAILS_ENV"] ||= "test"
+  require File.expand_path(File.dirname(__FILE__) + '/../../config/environment')
+  require 'cucumber/formatter/unicode' # Remove this line if you don't want Cucumber Unicode support
+  require 'cucumber/rails/world'
+  # require 'cucumber/rails/active_record'
+  require 'cucumber/web/tableish'
+  require 'capybara/rails'
+  require 'capybara/cucumber'
+  require 'capybara/session'
+  require 'mime/types'
+  require 'net/smtp'
+  require 'mail'
+  #require '/Users/bazzy/rails_projects/newshit/spork/ruby/1.9.1/gems/devise-1.4.4/app/controllers/devise/sessions_controller'
+  require 'treetop/runtime'
+
+  
+  # Lets you click links with onclick javascript handlers without using @culerity or @javascript
+  # Commented out because it causes bugs :-\
+  #require 'cucumber/rails/capybara_javascript_emulation'
+  
+  Capybara.default_selector = :css
+end
+ 
+Spork.each_run do
+  ActionController::Base.allow_rescue = false
+  Cucumber::Rails::World.use_transactional_fixtures = true
+  if defined?(ActiveRecord::Base)
+    begin
+      require 'database_cleaner'
+      DatabaseCleaner.strategy = :truncation
+    rescue LoadError => ignore_if_database_cleaner_not_present
+    end
+  end
+end
+
 # Remove/comment out the lines below if your app doesn't have a database.
 # For some databases (like MongoDB and CouchDB) you may need to use :truncation instead.
-begin
-  DatabaseCleaner.strategy = :transaction
-rescue NameError
-  raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
-end
+# begin
+#   DatabaseCleaner.strategy = :transaction
+# rescue NameError
+#   raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
+# end
 
 # You may also want to configure DatabaseCleaner to use different strategies for certain features and scenarios.
 # See the DatabaseCleaner documentation for details. Example:
