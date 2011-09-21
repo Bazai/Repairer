@@ -1,0 +1,31 @@
+# encoding: utf-8
+<%= form_for(@car_model) do |f| %>
+  <% if @car_model.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@car_model.errors.count, "error") %> prohibited this car_model from being saved:</h2>
+
+      <ul>
+      <% @car_model.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+      <%= f.label :brand_id %><br />
+      <%= f.select(:brand_id, options_from_collection_for_select(Brand.all, :id, :name),\
+            :prompt => "Выберите брэнд автомобиля")%>
+    </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
