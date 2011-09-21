@@ -5,6 +5,7 @@ Repairer::Application.routes.draw do
   get "register" => "users#new", :as => "register"
   resources :users
   resources :sessions
+  resources :admin
   root :to => "users#new"
 
   # The priority is based upon order of creation:
