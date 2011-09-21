@@ -1,0 +1,21 @@
+# encoding: utf-8
+<%= form_for(@brand) do |f| %>
+    <% if @brand.errors.any? %>
+    <div id="error_explanation">
+        <h2><%= pluralize(@brand.errors.count, "error") %> мешают сохранению этой марки:</h2>
+
+        <ul>
+            <% @brand.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+        </ul>
+  </div>
+<% end %>
+<div class="field">
+    <%= f.label "Название брэнда" %><br />
+    <%= f.text_field :name %>
+</div>
+<div class="actions">
+    <%= f.submit %>
+</div>
+<% end %>

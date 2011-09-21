@@ -6,6 +6,7 @@ Repairer::Application.routes.draw do
   resources :users
   resources :sessions
   resources :admin
+  resources :brands
   root :to => "users#new"
 
   # The priority is based upon order of creation:
