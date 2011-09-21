@@ -1,0 +1,23 @@
+<h1>Listing production_years</h1>
+
+<table>
+  <tr>
+    <th>Year</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @production_years.each do |production_year| %>
+  <tr>
+    <td><%= production_year.year %></td>
+    <td><%= link_to 'Show', production_year %></td>
+    <td><%= link_to 'Edit', edit_production_year_path(production_year) %></td>
+    <td><%= link_to 'Destroy', production_year, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Production year', new_production_year_path %>

@@ -1,3 +1,3 @@
 class ProductionYear < ActiveRecord::Base
-  belongs_to :carmodel
+  belongs_to :car_model
 end
