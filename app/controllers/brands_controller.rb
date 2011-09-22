@@ -1,6 +1,7 @@
 class BrandsController < ApplicationController
   # GET /brands
   # GET /brands.json
+  layout 'admin'
   def index
     @brands = Brand.all
 

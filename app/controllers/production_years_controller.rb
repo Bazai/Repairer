@@ -1,4 +1,5 @@
 class ProductionYearsController < ApplicationController
+  layout 'admin'
   # GET /production_years
   # GET /production_years.json
   def index

@@ -1,4 +1,5 @@
 class CarModelsController < ApplicationController
+  layout 'admin'
   # GET /car_models
   # GET /car_models.json
   def index

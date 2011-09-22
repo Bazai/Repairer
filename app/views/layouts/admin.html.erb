@@ -1,0 +1,30 @@
+# encoding: utf-8
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Repairer</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+    <div class="container">
+        <div class="user_nav">
+            <% if current_user %>
+                Зашли как: <%= current_user.email %>
+                <%= link_to "Выйти", logout_path %>
+            <% else %>
+                <%= link_to "Зарегистрироваться", register_path %> или
+                <%= link_to "Войти", login_path %>
+            <% end %>
+        </div>
+        <% flash.each do |name, msg| %>
+            <%= content_tag :div, msg, :id => "flash_#{name}"%>
+        <% end %>
+        <%= link_to "Брэнды", brands_path %>
+        <%= link_to "Модели", car_models_path %>
+        <%= link_to "Годы производства", production_years_path %>
+        <%= yield %>
+    </div>
+</body>
+</html>
