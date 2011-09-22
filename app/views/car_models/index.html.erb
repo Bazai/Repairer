@@ -1,9 +1,11 @@
-<h1>Listing car_models</h1>
+# encoding: utf-8
+<h1>Список моделей автомобилей</h1>
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Description</th>
+    <th>Брэнд</th>
+    <th>Модель</th>
+    <th>Описание</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,6 +13,7 @@
 
 <% @car_models.each do |car_model| %>
   <tr>
+    <td><%= car_model.brand.name %></td>
     <td><%= car_model.name %></td>
     <td><%= car_model.description %></td>
     <td><%= link_to 'Show', car_model %></td>

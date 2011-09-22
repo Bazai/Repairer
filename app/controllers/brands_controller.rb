@@ -26,6 +26,10 @@ class BrandsController < ApplicationController
   # GET /brands/new.json
   def new
     @brand = Brand.new
+    3.times do
+       car_model = @brand.car_models.build
+       4.times { car_model.production_years.build }
+    end
 
     respond_to do |format|
       format.html # new.html.erb

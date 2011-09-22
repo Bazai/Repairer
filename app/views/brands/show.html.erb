@@ -4,6 +4,26 @@
   <b>Название:</b>
   <%= @brand.name %>
 </p>
+<ol>
+    <% if !@brand.car_models.blank? %>
+      <% for car_model in @brand.car_models %>
+        <li><%= car_model.name %></li>
+        <ul>
+            <% if !car_model.production_years.blank? %>
+              <% for production_year in car_model.production_years %>
+                <li><%= production_year.year %></li>
+              <% end %>
+            <% else %>
+              
+            <% end %>
+            
+        </ul>
+      <% end %>
+    <% else %>
+      
+    <% end %>
+    
+</ol>
 
 
 <%= link_to 'Редактировать', edit_brand_path(@brand) %> |

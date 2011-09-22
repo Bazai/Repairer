@@ -7,15 +7,21 @@
         <ul>
             <% @brand.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>
-        <% end %>
+            <% end %>
         </ul>
-  </div>
-<% end %>
-<div class="field">
-    <%= f.label "Название брэнда" %><br />
-    <%= f.text_field :name %>
-</div>
-<div class="actions">
-    <%= f.submit "Сохранить" %>
-</div>
+    </div>
+    <% end %>
+    <div class="field">
+        <%= f.label "Название брэнда" %><br />
+        <%= f.text_field :name %>
+    </div>
+        
+        <%= f.fields_for :car_models do |builder| %>
+            <%= render 'car_models_fields', :f => builder %>
+
+        <% end %>
+    
+    <div class="actions">
+        <%= f.submit "Сохранить" %>
+    </div>
 <% end %>

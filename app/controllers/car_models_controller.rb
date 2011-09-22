@@ -3,7 +3,7 @@ class CarModelsController < ApplicationController
   # GET /car_models
   # GET /car_models.json
   def index
-    @car_models = CarModel.all
+    @car_models = CarModel.all(:order => 'brand_id asc, name asc')
 
     respond_to do |format|
       format.html # index.html.erb

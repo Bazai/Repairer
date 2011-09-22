@@ -1,0 +1,13 @@
+<div class="field">
+    <%= f.label :name, "Название модели" %>
+    <%= f.text_field :name %>
+    <%= f.check_box :_destroy %>
+    <%= f.label :_destroy, "Удалить модель" %>
+</div>
+    <%= f.fields_for :production_years do |builder| %>
+        <%= builder.label :year, "Год выпуска" %>
+        <%= builder.text_field :year %>
+        <%= builder.check_box :_destroy %>
+        <%= builder.label :_destroy, "Удалить год выпуска" %><br>
+    <% end %>
+    <br>
