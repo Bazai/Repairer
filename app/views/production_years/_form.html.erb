@@ -15,11 +15,7 @@
     <%= f.label :year %><br />
     <%= f.number_field :year %>
   </div>
-      <div class="field">
-            <%= f.label :carmodel_id %><br />
-            <%= f.select(:carmodel_id, options_from_collection_for_select(CarModel.all, :id, :name),\
-                  :prompt => "Выберите модель автомобиля")%>
-          </div>
+  <p><%= @production_year.car_model.inspect %></p>
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -48,12 +48,12 @@ ActiveRecord::Schema.define(:version => 20110921114245) do
 
   create_table "production_years", :force => true do |t|
     t.integer  "year"
-    t.integer  "carmodel_id"
+    t.integer  "car_model_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "production_years", ["carmodel_id"], :name => "index_production_years_on_carmodel_id"
+  add_index "production_years", ["car_model_id"], :name => "index_production_years_on_car_model_id"
 
   create_table "production_years_issues", :id => false, :force => true do |t|
     t.integer "production_year_id"

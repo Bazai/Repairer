@@ -25,6 +25,8 @@ class ProductionYearsController < ApplicationController
   # GET /production_years/new.json
   def new
     @production_year = ProductionYear.new
+    @brand = Brand.all
+    @car_model = CarModel.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +37,7 @@ class ProductionYearsController < ApplicationController
   # GET /production_years/1/edit
   def edit
     @production_year = ProductionYear.find(params[:id])
+    @car_model = @production_year.car_model
   end
 
   # POST /production_years
