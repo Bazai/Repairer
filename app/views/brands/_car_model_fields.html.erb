@@ -1,0 +1,10 @@
+<div class="field">
+    <%= f.label :name, "Название модели" %>
+    <%= f.text_field :name %>
+    <%= link_to_remove_fields "Удалить модель", f %>
+</div>
+    <%= f.fields_for :production_years do |production_year| %>
+        <%= render 'production_year_fields', :f => production_year %>
+    <% end %>
+    <br>
+    <%= link_to_add_fields "Добавить год выпуска", f, :production_years %>

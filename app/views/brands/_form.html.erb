@@ -15,12 +15,10 @@
         <%= f.label "Название брэнда" %><br />
         <%= f.text_field :name %>
     </div>
-        
         <%= f.fields_for :car_models do |builder| %>
-            <%= render 'car_models_fields', :f => builder %>
-
+            <%= render 'car_model_fields', :f => builder %>
         <% end %>
-    
+        <%= link_to_add_fields "Добавить модель автомобиля", f, :car_models %>
     <div class="actions">
         <%= f.submit "Сохранить" %>
     </div>
