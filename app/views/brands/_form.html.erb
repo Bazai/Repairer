@@ -1,25 +1,14 @@
 # encoding: utf-8
-<%= form_for(@brand) do |f| %>
-    <% if @brand.errors.any? %>
-    <div id="error_explanation">
-        <h2><%= pluralize(@brand.errors.count, "error") %> мешают сохранению этой марки:</h2>
-
-        <ul>
-            <% @brand.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-            <% end %>
-        </ul>
-    </div>
-    <% end %>
-    <div class="field">
-        <%= f.label "Название брэнда" %><br />
-        <%= f.text_field :name %>
-    </div>
-        <%= f.fields_for :car_models do |builder| %>
-            <%= render 'car_model_fields', :f => builder %>
+<%= semantic_form_for @brand do |f| %>
+    <%= f.inputs do %>
+        <%= f.input :name, :label => "Имя" %>
+        <h3>Модели</h3>
+        <%= f.semantic_fields_for :car_models do |car_model| %>
+            <%= render 'car_model_fields', :f => car_model %>
         <% end %>
-        <%= link_to_add_fields "Добавить модель автомобиля", f, :car_models %>
-    <div class="actions">
-        <%= f.submit "Сохранить" %>
-    </div>
+        <div class="links">
+            <%= link_to_add_association "Добавить модель", f, :car_models %>
+        </div>
+    <% end %>
+    <%= f.buttons %>
 <% end %>

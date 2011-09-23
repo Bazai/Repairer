@@ -1,10 +1,14 @@
-<div class="field">
-    <%= f.label :name, "Название модели" %>
-    <%= f.text_field :name %>
-    <%= link_to_remove_fields "Удалить модель", f %>
-</div>
-    <%= f.fields_for :production_years do |production_year| %>
-        <%= render 'production_year_fields', :f => production_year %>
+<div class="car-models-fields">
+    <%= f.inputs do %>
+        <%= f.input :name %>
+        <%= f.input :description %>
+        <h3>Годы выпуска</h3>
+        <%= f.semantic_fields_for :production_years do |production_year| %>
+            <%= render 'production_year_fields', :f => production_year %>
+        <% end %>
+        <%= link_to_remove_association "удалить модель", f %>
+        <div class="links">
+            <%= link_to_add_association "добавить год выпуска", f, :production_years %>
+        </div>
     <% end %>
-    <br>
-    <%= link_to_add_fields "Добавить год выпуска", f, :production_years %>
+</div>

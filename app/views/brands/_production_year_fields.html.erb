@@ -1,5 +1,6 @@
-        <div class="field">
-            <%= f.label :year, "Год выпуска" %>
-            <%= f.text_field :year %>
-            <%= link_to_remove_fields "Удалить год выпуска", f %>
-        </div>
+ <div class="production-years-fields">
+     <%= f.inputs do %>
+         <%= f.input :year %>
+         <%= link_to_remove_association "удалить год выпуска", f %>
+     <% end %>
+ </div>
