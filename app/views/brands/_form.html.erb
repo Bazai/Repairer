@@ -1,14 +1,12 @@
 # encoding: utf-8
-<%= semantic_form_for @brand do |f| %>
-    <%= f.inputs do %>
+<%= simple_form_for @brand do |f| %>
         <%= f.input :name, :label => "Имя" %>
         <h3>Модели</h3>
-        <%= f.semantic_fields_for :car_models do |car_model| %>
+        <%= f.simple_fields_for :car_models do |car_model| %>
             <%= render 'car_model_fields', :f => car_model %>
         <% end %>
         <div class="links">
             <%= link_to_add_association "Добавить модель", f, :car_models %>
         </div>
-    <% end %>
-    <%= f.buttons %>
+        <%= f.button :submit %>
 <% end %>

@@ -8,7 +8,8 @@ gem 'rails', '3.1.0'
 gem 'sqlite3'
 gem "jquery-rails"
 gem 'sorcery'
-gem 'formtastic', '>= 2.0.0.rc5'
+# gem 'formtastic', '>= 2.0.0.rc5'
+gem 'simple_form'
 gem 'cocoon'
 
 

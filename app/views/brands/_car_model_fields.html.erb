@@ -1,14 +1,12 @@
 <div class="nested-fields">
-    <%= f.inputs do %>
         <%= f.input :name %>
-        <%= f.input :description %>
+        <%= f.input :description, :as => :text, :input_html => { :rows => 3 } %>
+        <%= link_to_remove_association "удалить модель", f %>
         <h3>Годы выпуска</h3>
-        <%= f.semantic_fields_for :production_years do |production_year| %>
+        <%= f.simple_fields_for :production_years do |production_year| %>
             <%= render 'production_year_fields', :f => production_year %>
         <% end %>
-        <%= link_to_remove_association "удалить модель", f %>
         <div class="links">
-            <%= link_to_add_association "добавить год выпуска", f, :production_years %>
+            <%= link_to_add_association "добавить год выпуска", f, :production_years %><br />
         </div>
-    <% end %>
 </div>
