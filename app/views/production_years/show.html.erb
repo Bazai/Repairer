@@ -1,10 +1,20 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Year:</b>
+  <b>Год:</b>
   <%= @production_year.year %>
   <%= @production_year.car_model.name %>
 </p>
+<ol>
+    <% if !@production_year.issues.blank? %>
+      <% for issue in @production_year.issues %>
+        <li><%= issue.price.to_s + " денег | " + issue.description %></li>
+      <% end %>
+    <% else %>
+      <p>Пустовато здесь, однако</p>
+    <% end %>
+    
+</ol>
 
 
 <%= link_to 'Edit', edit_production_year_path(@production_year) %> |

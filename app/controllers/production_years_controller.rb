@@ -38,7 +38,7 @@ class ProductionYearsController < ApplicationController
   # GET /production_years/1/edit
   def edit
     @production_year = ProductionYear.find(params[:id])
-    @car_model = @production_year.car_model
+    # @car_model = @production_year.car_model
   end
 
   # POST /production_years

@@ -1,0 +1,5 @@
+<div class="nested-fields">
+        <%= f.input :price %>
+        <%= f.input :description, :as => :text, :input_html => { :rows => 3 } %>
+        <%= link_to_remove_association "удалить issue", f %>
+</div>

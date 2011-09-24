@@ -1,8 +1,10 @@
-<h1>Listing production_years</h1>
+# encoding: utf-8
+<h1>Список годов выпуска</h1>
 
 <table>
   <tr>
-    <th>Year</th>
+    <th>Год</th>
+    <th></th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,8 +13,9 @@
 
 <% @production_years.each do |production_year| %>
   <tr>
-    <td><%= production_year.year %></td>
+    <td><%= production_year.car_model.brand.name %></td>
     <td><%= production_year.car_model.name %></td>
+    <td><%= production_year.year %></td>
     <td><%= link_to 'Show', production_year %></td>
     <td><%= link_to 'Edit', edit_production_year_path(production_year) %></td>
     <td><%= link_to 'Destroy', production_year, confirm: 'Are you sure?', method: :delete %></td>
