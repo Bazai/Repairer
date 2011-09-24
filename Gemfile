@@ -5,13 +5,6 @@ gem 'rails', '3.1.0'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-group :production do
-  gem 'pg'
-end
-group :development, :test do
-  gem 'sqlite3'
-end
-
 gem "jquery-rails"
 gem 'sorcery'
 gem 'simple_form'
@@ -20,6 +13,9 @@ gem 'cocoon'
 gem 'thin'
 gem 'heroku'
 gem 'taps'
+
+gem 'sqlite3', :group => [:development, :test]
+gem 'pg', :group => [:production]
 
 
 # Gems used only for assets and not required
