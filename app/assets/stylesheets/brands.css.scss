@@ -1,0 +1,22 @@
+.links {
+    margin-top: 20px;
+}
+
+form.brand {
+    padding-left: 20px;
+    
+    fieldset.inputs {
+        padding-left: 5px;
+        
+        div.nested-fields {
+            padding-left: 40px;
+            
+            fieldset.inputs {
+                font-size: 16px;
+                a.remove_fields {
+                    padding-bottom: 10px;
+                }
+            }
+        }
+    }
+}
