@@ -14,10 +14,6 @@ gem 'thin'
 gem 'heroku'
 gem 'taps'
 
-gem 'sqlite3', :group => [:development, :test]
-gem 'pg', :group => [:production]
-
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -30,6 +26,7 @@ group :development do
   gem "cucumber-rails"
   gem "capybara"
   gem "rspec-rails", ">= 2.0.1"
+  gem 'sqlite3'
 end
 
 group :test do
@@ -39,6 +36,11 @@ group :test do
   gem "database_cleaner"
   gem "spork", ">= 0.9.0.rc9"
   gem "factory_girl_rails"
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
 end
 
 
