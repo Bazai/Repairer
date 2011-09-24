@@ -9,6 +9,7 @@ Repairer::Application.routes.draw do
   resources :brands
   resources :car_models
   resources :production_years
+  resources :issues
   root :to => "users#new"
 
   # The priority is based upon order of creation:
