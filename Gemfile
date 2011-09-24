@@ -12,7 +12,6 @@ gem 'cocoon'
 
 gem 'thin'
 gem 'heroku'
-gem 'taps'
 
 # Gems used only for assets and not required
 # in production environments by default.
