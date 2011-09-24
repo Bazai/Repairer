@@ -1,0 +1,20 @@
+# encoding: utf-8
+<h1>Estimator#index</h1>
+<p>Find me in app/views/estimator/index.html.erb</p>
+<% @brands.each do |b| %>
+    <%= b.name  %><br /> 
+<% end %>
+<% if !params[:brand].blank? %>
+ <%= "А ты выбрал:" + Brand.find(params[:brand][:id]).name %>
+<% else %>
+  
+<% end %>
+
+<%= form_tag do %>
+  <%= collection_select(:brand, :id, @brands, :id, :name, :prompt => true, :label => "Выбирай брэнд") %>
+  <%= submit_tag "Отправить", :id => "submit", :name => "submit" %>
+<% end -%>
+<p><%= params.inspect %></p>
+    
+    
+
