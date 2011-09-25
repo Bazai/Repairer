@@ -15,6 +15,16 @@
   <%= @car_model.brand.name %>
 </p>
 
+<ul>
+  <% if !@car_model.production_years.blank? %>
+    <% for production_year in @car_model.production_years %>
+      <li><%= production_year.year %></li>
+    <% end %>
+  <% else %>
+
+  <% end %>
+</ul>
+
 
 <%= link_to 'Edit', edit_car_model_path(@car_model) %> |
 <%= link_to 'Back', car_models_path %>

@@ -42,6 +42,7 @@ group :production do
   gem 'pg'
 end
 
+gem 'therubyracer'
 
 # Use unicorn as the web server
 # gem 'unicorn'
