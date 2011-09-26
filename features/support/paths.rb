@@ -14,6 +14,9 @@ module NavigationHelpers
       
     when /^Админка$/
       '/admin'
+    
+    when /^Эстиматор$/
+      '/estimator'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

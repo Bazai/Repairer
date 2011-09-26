@@ -10,6 +10,15 @@
     <%= collection_select(*@brands_select_params) %>
     <%= collection_select(*@car_models_select_params) %>
     <%= collection_select(*@production_years_select_params) %>
-    <% # Пока еще никто ничего не выбрал %>
 <%= submit_tag "Отправить", :id => "submit", :name => "submit" %>
 <% end -%>
+<% if !@issues.nil? %>
+    <ul>
+    <% if !@issues.blank? %>
+      <% for issue in @issues %>
+        <li><%= issue.description %></li>
+      <% end %>
+    <% else %>
+    <% end %>
+    </ul>
+<% end %>
