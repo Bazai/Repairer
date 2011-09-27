@@ -1,0 +1,22 @@
+<% # Пока еще никто ничего не выбрал %>
+<% if (params[:brand].blank? && params[:car_model].blank? && params[:production_year].blank?) %>
+    <%= collection_select(:brand, :id, @brands, :id, :name, :prompt => "Выбирай брэнд") %>
+    <%= collection_select(:car_model, :id, @car_models, :id, :name, { :prompt => "Модель автомобиля" }, \
+    { :disabled => "disabled" } ) %>
+    <%= collection_select(:production_year, :id, @car_models, :id, :name, { :prompt => "Год выпуска" }, \
+    { :disabled => "disabled" } ) %>
+<% # Выбрали какой то брэнд %>
+<% elsif !params[:brand].blank? && params[:car_model].blank? && params[:production_year].blank? %>
+    <%= collection_select(:brand, :id, @brands, :id, :name, { :selected => params[:brand][:id] } )  %>
+    <%= collection_select(:car_model, :id, Brand.find(params[:brand][:id]).car_models, :id, :name, \
+    { :prompt => "А вот сейчас выбирай модель" } ) %>
+    <%= collection_select(:production_year, :id, @car_models, :id, :name, { :prompt => "Год выпуска" }, \
+    { :disabled => "disabled" } ) %>
+<% # Выбрали какую то модель %>
+<% elsif !params[:brand].blank? && !params[:car_model].blank? && params[:production_year].blank?  %>
+    <%= collection_select(:brand, :id, @brands, :id, :name, { :selected => params[:brand][:id] } )  %>
+    <%= collection_select(:car_model, :id, Brand.find(params[:brand][:id]).car_models, :id, :name, \
+    { :selected => params[:car_model][:id] }) unless params[:car_model][:id].empty? %>
+    <%= collection_select(:production_year, :id, CarModel.find(params[:car_model][:id]).production_years, :id, :year, \
+    { :prompt => "Можно выбрать год выпуска" } ) unless params[:car_model][:id].empty? %>
+<% end %>

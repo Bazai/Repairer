@@ -1,14 +1,21 @@
 Repairer::Application.routes.draw do
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
-  # get "signup" => "users#new", :as => "signup"
   get "register" => "users#new", :as => "register"
-  resources :users
-  resources :sessions
-  resources :admin
-  resources :brands
-  resources :car_models
-  resources :production_years
+  resources :users, :sessions, :admin
+  
+  # resources :brands do
+  #     resources :car_models do
+  #       resources :production_years do
+  #         resources :issues
+  #       end
+  #     end
+  #   end
+  resources :brands, :car_models, :production_years, :issues
+  get "estimator/index"
+  post "estimator/index"
+  get "estimator" => "estimator#index"
+  # post "estimator" => "estimator#index"
   root :to => "users#new"
 
   # The priority is based upon order of creation:
