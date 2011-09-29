@@ -1,13 +1,22 @@
 # encoding: utf-8
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html lang="ru-RU">
 <head>
-  <title>Repairer</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+        <meta charset="UTF-8">
+        <title>Avtologi</title>
+        <%= stylesheet_link_tag    "application" %>
+        <%= javascript_include_tag "application" %>
+        <%= csrf_meta_tags %>
 </head>
+
 <body>
+<div id="header"><h1>Avtologi</h1>
+<p>click this</p>
+
+<div class="hidden">It will be hidden</div>
+
+ </div>
+
     <div class="container">
         <div class="user_nav">
             <% if current_user %>
@@ -23,5 +32,6 @@
         <% end %>
         <%= yield %>
     </div>
+    <div id="footer">Copyright</div>
 </body>
 </html>
