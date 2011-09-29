@@ -1,7 +1,7 @@
 class ProductionYear < ActiveRecord::Base
   belongs_to :car_model
-  has_many :issues
-  accepts_nested_attributes_for :issues, :allow_destroy => true, :reject_if => proc { |a| a[:price].blank? }
+  has_many :maintenances
+  accepts_nested_attributes_for :maintenances, :allow_destroy => true, :reject_if => proc { |a| a[:price].blank? }
   
   
   def edit_header

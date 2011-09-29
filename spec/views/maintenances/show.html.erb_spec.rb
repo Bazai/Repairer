@@ -1,18 +1,21 @@
 require 'spec_helper'
 
-describe "issues/show.html.erb" do
+describe "maintenances/show.html.erb" do
   before(:each) do
-    @issue = assign(:issue, stub_model(Issue,
+    @maintenance = assign(:maintenance, stub_model(Maintenance,
+      :decsription => "Decsription",
       :price => 1,
-      :description => "MyText"
+      :production_year_id => 1
     ))
   end
 
   it "renders attributes in <p>" do
     render
     # Run the generator again with the --webrat flag if you want to use webrat matchers
+    rendered.should match(/Decsription/)
+    # Run the generator again with the --webrat flag if you want to use webrat matchers
     rendered.should match(/1/)
     # Run the generator again with the --webrat flag if you want to use webrat matchers
-    rendered.should match(/MyText/)
+    rendered.should match(/1/)
   end
 end

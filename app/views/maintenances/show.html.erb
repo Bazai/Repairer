@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Decsription:</b>
+  <%= @maintenance.decsription %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @maintenance.price %>
+</p>
+
+<p>
+  <b>Production year:</b>
+  <%= @maintenance.production_year_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_maintenance_path(@maintenance) %> |
+<%= link_to 'Back', maintenances_path %>

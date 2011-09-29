@@ -1,9 +1,9 @@
-<%= simple_form_for(@issue) do |f| %>
+<%= simple_form_for(@maintenance) do |f| %>
   <%= f.error_notification %>
 
   <div class="inputs">
-    <%= f.input :price %>
     <%= f.input :description %>
+    <%= f.input :price %>
   </div>
 
   <div class="actions">

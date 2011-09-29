@@ -1,0 +1,27 @@
+<h1>Listing maintenances</h1>
+
+<table>
+  <tr>
+    <th>Decsription</th>
+    <th>Price</th>
+    <th>Production year</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @maintenances.each do |maintenance| %>
+  <tr>
+    <td><%= maintenance.decsription %></td>
+    <td><%= maintenance.price %></td>
+    <td><%= maintenance.production_year_id %></td>
+    <td><%= link_to 'Show', maintenance %></td>
+    <td><%= link_to 'Edit', edit_maintenance_path(maintenance) %></td>
+    <td><%= link_to 'Destroy', maintenance, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Maintenance', new_maintenance_path %>

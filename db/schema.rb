@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110929182012) do
+ActiveRecord::Schema.define(:version => 20110929143826) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -60,9 +60,9 @@ ActiveRecord::Schema.define(:version => 20110929182012) do
 # Could not dump table "production_years" because of following StandardError
 #   Unknown type 'reference' for column 'modification'
 
-  create_table "production_years_issues", :id => false, :force => true do |t|
+  create_table "production_years_maintenances", :id => false, :force => true do |t|
     t.integer "production_year_id"
-    t.integer "issue_id"
+    t.integer "maintenance_id"
   end
 
   create_table "users", :force => true do |t|

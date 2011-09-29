@@ -1,6 +1,6 @@
-class CreateIssues < ActiveRecord::Migration
+class CreateMaintenances < ActiveRecord::Migration
   def self.up
-    create_table :issues do |t|
+    create_table :maintenances do |t|
       t.string :description
       t.integer :price
 
@@ -9,6 +9,6 @@ class CreateIssues < ActiveRecord::Migration
   end
   
   def self.down
-    drop_table :issues
+    drop_table :maintenances
   end
 end
