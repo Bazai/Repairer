@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110924135245) do
+ActiveRecord::Schema.define(:version => 20110929182012) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20110924135245) do
 
   add_index "cars", ["brand_id"], :name => "index_cars_on_brand_id"
 
-  create_table "issues", :force => true do |t|
+  create_table "maintenances", :force => true do |t|
     t.string   "description"
     t.integer  "price"
     t.datetime "created_at"
@@ -47,14 +47,18 @@ ActiveRecord::Schema.define(:version => 20110924135245) do
     t.integer  "production_year_id"
   end
 
-  create_table "production_years", :force => true do |t|
-    t.integer  "year"
+  create_table "modifications", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
     t.integer  "car_model_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "production_years", ["car_model_id"], :name => "index_production_years_on_car_model_id"
+  add_index "modifications", ["car_model_id"], :name => "index_modifications_on_car_model_id"
+
+# Could not dump table "production_years" because of following StandardError
+#   Unknown type 'reference' for column 'modification'
 
   create_table "production_years_issues", :id => false, :force => true do |t|
     t.integer "production_year_id"
