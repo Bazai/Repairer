@@ -1,6 +1,8 @@
 <%= simple_form_for(@maintenance) do |f| %>
-  <%= f.error_notification %>
 
+  <%= f.association :production_year, :collection => ProductionYear.all.map \
+   { |r| [r.edit_header, r.id, r.id] }, :prompt => "Выберите модификацию" %>
+<!--"#{r.car_model.brand.name} - #{r.car_model.name} - #{r.year}"-->
   <div class="inputs">
     <%= f.input :description %>
     <%= f.input :price %>

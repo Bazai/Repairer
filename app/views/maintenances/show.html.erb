@@ -1,8 +1,6 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <b>Decsription:</b>
-  <%= @maintenance.decsription %>
+  <b>Description:</b>
+  <%= @maintenance.description %>
 </p>
 
 <p>
@@ -10,10 +8,22 @@
   <%= @maintenance.price %>
 </p>
 
-<p>
-  <b>Production year:</b>
-  <%= @maintenance.production_year_id %>
-</p>
+<% if !@maintenance.production_year_id.blank? %>
+    <p>
+      <b>Brand:</b>
+      <%= @maintenance.production_year.car_model.brand.name %>
+    </p>
+
+    <p>
+      <b>Car model:</b>
+      <%= @maintenance.production_year.car_model.name %>
+    </p>
+
+    <p>
+      <b>Production year:</b>
+      <%= @maintenance.production_year.year %>
+    </p>
+<% end %>
 
 
 <%= link_to 'Edit', edit_maintenance_path(@maintenance) %> |
