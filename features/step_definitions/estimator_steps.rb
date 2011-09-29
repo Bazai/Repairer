@@ -38,6 +38,12 @@ end
   end
 end
 
+То /^в списке "([^"]*)" должно быть выбрано "([^"]*)"(?: within "([^\"]*)")?$/ do |field, value, selector|
+  with_scope(selector) do
+    field_labeled(field).find(:xpath, ".//option[@selected = 'selected'][text() = '#{value}']").should be_present
+  end
+end
+
 Допустим /^список "([^"]*)"( не)? должен быть отключен$/ do |label, negate|
   element = begin
     find_button(label)
@@ -46,4 +52,6 @@ end
   end
   ["false", "", nil].send(negate ? :should : :should_not, include(element[:disabled]))
 end
+
+
 
