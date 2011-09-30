@@ -1,9 +1,5 @@
 Repairer::Application.routes.draw do
 
-  resources :parts
-
-  resources :labors
-
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   get "register" => "users#new", :as => "register"
@@ -16,7 +12,7 @@ Repairer::Application.routes.draw do
   #       end
   #     end
   #   end
-  resources :brands, :car_models, :production_years, :maintenances
+  resources :brands, :car_models, :production_years, :maintenances, :parts, :labors
   get "estimator/index"
   post "estimator/index"
   get "estimator" => "estimator#index"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110921074535) do
+ActiveRecord::Schema.define(:version => 20110930170859) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -39,14 +39,13 @@ ActiveRecord::Schema.define(:version => 20110921074535) do
 
   add_index "cars", ["brand_id"], :name => "index_cars_on_brand_id"
 
-  create_table "production_years", :force => true do |t|
-    t.integer  "year"
-    t.integer  "car_model_id"
+  create_table "labors", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "maintenance_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "production_years", ["car_model_id"], :name => "index_production_years_on_car_model_id"
 
   create_table "maintenances", :force => true do |t|
     t.string   "description"
@@ -57,6 +56,27 @@ ActiveRecord::Schema.define(:version => 20110921074535) do
   end
 
   add_index "maintenances", ["production_year_id"], :name => "index_maintenances_on_production_year_id"
+
+  create_table "maintenances_parts", :id => false, :force => true do |t|
+    t.integer "maintenance_id"
+    t.integer "part_id"
+  end
+
+  create_table "parts", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "production_years", :force => true do |t|
+    t.integer  "year"
+    t.integer  "car_model_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "production_years", ["car_model_id"], :name => "index_production_years_on_car_model_id"
 
   create_table "users", :force => true do |t|
     t.string   "email"

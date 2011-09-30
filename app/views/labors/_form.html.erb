@@ -1,5 +1,6 @@
 <%= simple_form_for(@labor) do |f| %>
-  <%= f.error_notification %>
+  <%= f.association :maintenance, :collection => Maintenance.all.map \
+   { |r| [r.header, r.id, r.id] }, :prompt => "Выберите Обслуживание" %>
 
   <div class="inputs">
     <%= f.input :name %>
