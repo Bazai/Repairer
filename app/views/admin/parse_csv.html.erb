@@ -1,0 +1,11 @@
+<%#= params.inspect %>
+<%#= @parsed_file.inspect %>
+<%= @loli.inspect %>
+<%= form_for :dump, :url=>{ :controller => "admin", :action => "parse_csv"}, :html => { :multipart => true } do |f| -%>
+<p>
+    <%= f.label :dump_file, "Dump File" %>
+    <%#= f.file_field :file %>
+        <%= file_field_tag "file" %>
+    <%= f.submit "Submit", :disable_with => 'Submiting...' %>
+</p>  
+<% end -%>
