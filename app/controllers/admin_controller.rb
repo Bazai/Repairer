@@ -9,19 +9,32 @@ class AdminController < ApplicationController
   def parse_csv
     @loli = []
     if !params[:file].nil?
-      # @loli = FasterCSV.new(params[:file].tempfile, :headers => true).each do |row|
       csv = CSV.new(params[:file].tempfile, :headers => true, :col_sep => ";" )
       csv.each do |row|
-        # @loli << row["brand"] + " " + row["model"] + " " + row["year"]
-        # @loli << row["brand"].to_s + " " + row["model"].to_s + " " + row["year"].to_s
-        # brand = Brand.find_by_name(row["brand"])
-        brand = Brand.find_by_name(row["brand"]).nil? ? Brand.new(:name => row["brand"].to_s) : Brand.find_by_name(row["brand"].to_s)
-        brand.save if brand.valid?
-        car_model = CarModel.find_by_name_and_brand_id(row["model"].to_s, brand.id).nil? ? \
-                   CarModel.new(:name => row["model"].to_s, :brand => brand) : \
-                   CarModel.find_by_name_and_brand_id(row["model"].to_s, brand)
-        car_model.save if car_model.valid?
-        # production_year = ProductionYear.create(:year => hash[:production_year], :car_model => car_model)
+        if Brand.where(:name => row["brand"].to_s.strip).first.nil?
+          brand = Brand.new(:name => row["brand"].to_s.strip)
+          brand.save if brand.valid?
+          puts brand.inspect
+        else
+          brand = Brand.where(:name => row["brand"].to_s.strip).first
+          puts brand.inspect
+        end
+        if CarModel.where("name like ? AND brand_id = ?", row["model"].to_s.strip, brand).first.nil?
+          car_model = CarModel.new(:name => row["model"].to_s.strip, :brand => brand)
+          car_model.save if car_model.valid?
+          puts car_model.inspect
+        else
+          car_model = CarModel.where("name like ? AND brand_id = ?", row["model"].to_s.strip, brand).first
+          puts car_model.inspect
+        end
+        if ProductionYear.find_by_year_and_car_model_id(row["year"].to_s, car_model.id).nil?
+          production_year = ProductionYear.new(:year => row["year"].to_s, :car_model => car_model)
+          production_year.save if production_year.valid?
+          puts production_year.inspect
+        else
+          production_year = ProductionYear.find_by_year_and_car_model_id(row["year"].to_s, car_model)
+          puts production_year.inspect
+        end
       end
     end
   end

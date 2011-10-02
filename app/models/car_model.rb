@@ -12,6 +12,17 @@ class CarModel < ActiveRecord::Base
     self.errors.add(:name, "модели должно быть уникально, в рамках родительского брэнда") if self.brand.has_car_model?(self.name)
   end
   
+  
+  # Возвращает true или false, в зависимости от того, есть ли у данной модели
+  # год производства со значением year
+  def has_production_year?(year)
+      arr = []
+      self.production_years.each do |production_year|
+        arr << production_year.year
+      end
+      arr.include?(year)
+  end
+  
   def before_update
     # puts self.parent.inspect
     self.errors.add(:name, "модели должно быть уникально, в рамках родительского брэнда") if self.brand.has_car_model?(self.name)

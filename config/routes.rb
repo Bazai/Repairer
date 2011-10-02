@@ -2,7 +2,7 @@ Repairer::Application.routes.draw do
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   get "register" => "users#new", :as => "register"
-  resources :users, :sessions#, :admin
+  resources :users, :sessions #, :admin
   
   # resources :brands do
   #     resources :car_models do
@@ -14,6 +14,7 @@ Repairer::Application.routes.draw do
   resources :brands, :car_models, :production_years, :issues
   get "estimator/index"
   post "estimator/index"
+  get "admin/index"
   get "admin/parse_csv"
   post "admin/parse_csv"
   get "estimator" => "estimator#index"
