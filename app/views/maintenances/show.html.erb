@@ -1,0 +1,53 @@
+<p>
+  <b>Description:</b>
+  <%= @maintenance.description %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @maintenance.price %>
+</p>
+
+<% if !@maintenance.production_year_id.blank? %>
+    <p>
+      <b>Brand:</b>
+      <%= @maintenance.production_year.car_model.brand.name %>
+    </p>
+
+    <p>
+      <b>Car model:</b>
+      <%= @maintenance.production_year.car_model.name %>
+    </p>
+
+    <p>
+      <b>Production year:</b>
+      <%= @maintenance.production_year.year %>
+    </p>
+<% end %>
+
+<h2>Работы</h2>
+<ul>
+<% if !@maintenance.labors.blank? %>
+    <% for labor in @maintenance.labors %>
+          <li><p>Name: <%= labor.name %></p>
+
+            <p>Desc: <%= labor.description %></p></li>
+                <% end %>
+    <% else %>
+
+    <% end %>
+</ul>
+
+<h2>Детали</h2>
+<ul>
+<% if !@maintenance.parts.blank? %>
+    <% for part in @maintenance.parts %>
+          <li>
+            <p>Name: <%= part.name %></p>
+            <p>Desc: <%= part.description %></p>
+          </li>
+    <% end %>
+  <% end %>
+</ul>
+<%= link_to 'Edit', edit_maintenance_path(@maintenance) %> |
+<%= link_to 'Back', maintenances_path %>

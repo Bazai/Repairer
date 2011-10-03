@@ -7,9 +7,9 @@
   <%= @production_year.car_model.name %>
 </p>
 <ol>
-    <% if !@production_year.issues.blank? %>
-      <% for issue in @production_year.issues %>
-        <li><%= issue.price.to_s + " денег | " + issue.description %></li>
+    <% if !@production_year.maintenances.blank? %>
+      <% for maintenance in @production_year.maintenances %>
+        <li><%= maintenance.price.to_s + " денег | " + maintenance.description %></li>
       <% end %>
     <% else %>
       <p>Пустовато здесь, однако</p>
