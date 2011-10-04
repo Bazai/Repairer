@@ -1,0 +1,31 @@
+<h1>Список Видов Обслуживания</h1>
+
+<table>
+  <tr>
+    <th>Бренд</th>
+    <th>Модель</th>
+    <th>Год выпуска</th>
+    <th>Описание</th>
+    <th>Цена</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @maintenances.each do |maintenance| %>
+  <tr>
+    <td><%= maintenance.production_year.car_model.brand.name %></td>
+    <td><%= maintenance.production_year.car_model.name %></td>
+    <td><%= maintenance.production_year.year %></td>
+    <td><%= maintenance.description %></td>
+    <td><%= maintenance.price %></td>
+    <td><%= link_to 'Show', maintenance %></td>
+    <td><%= link_to 'Edit', edit_maintenance_path(maintenance) %></td>
+    <td><%= link_to 'Destroy', maintenance, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Новое Обслуживание', new_maintenance_path %>

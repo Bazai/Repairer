@@ -13,6 +13,7 @@
             <% if current_user %>
                 Зашли как: <%= current_user.email %>
                 <%= link_to "Выйти", logout_path %>
+                <%= link_to "Калькулятор", estimator_path %>
             <% else %>
                 <%= link_to "Зарегистрироваться", register_path %> или
                 <%= link_to "Войти", login_path %>
@@ -24,7 +25,9 @@
         <%= link_to "Брэнды", brands_path %>
         <%= link_to "Модели", car_models_path %>
         <%= link_to "Годы производства", production_years_path %>
-        <%= link_to "Issues", issues_path %>
+        <%= link_to "Maintenances", maintenances_path %>
+        <%= link_to "Parts", parts_path %>
+        <%= link_to "Labors", labors_path %>
         <%= yield %>
     </div>
 </body>

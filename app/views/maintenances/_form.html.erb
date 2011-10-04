@@ -1,0 +1,34 @@
+<%= simple_form_for(@maintenance) do |f| %>
+
+  <%= f.association :production_year, :collection => ProductionYear.all.map \
+   { |r| [r.edit_header, r.id, r.id] }, :prompt => "Выберите модификацию" %>
+<!--"#{r.car_model.brand.name} - #{r.car_model.name} - #{r.year}"-->
+  <div class="inputs">
+    <%= f.input :description %>
+    <%= f.input :price %>
+  </div>
+
+  <% if !@maintenance.labors.blank? %>
+    <h3>Работы</h3>
+    <%= f.simple_fields_for :labors do |labor| %>
+        <%= render 'labor_fields', :f => labor %>
+    <% end %>
+  <% end %>
+    <div class="links">
+        <%= link_to_add_association "Добавить работу", f, :labors %>
+    </div>
+
+  <% if !@maintenance.parts.blank? %>
+    <h3>Детали</h3>
+    <%= f.simple_fields_for :parts do |part| %>
+        <%= render 'part_fields', :f => part %>
+    <% end %>
+  <% end %>
+    <div class="links">
+        <%= link_to_add_association "Добавить Деталь", f, :parts %>
+    </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
