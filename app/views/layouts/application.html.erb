@@ -10,31 +10,48 @@
 </head>
 
 <body>
-<div id="header"><h1>Avtologi</h1>
-<p>click this</p>
 
-<div class="hidden">It will be hidden</div>
+<div id="wrap">
 
- </div>
+   <div id="header" class="group">
+                <h1 id="logo">Avtologi</h1>
+                
+                <div id="login-block">
+                 <% if current_user %>
+                                Зашли как: <%= current_user.email %>
+                                <%= link_to "Выйти", logout_path %>
+                                <% if can? :index, :admin %>
+                                    <%= link_to "Админка", admin_path %>
+                                <% end %>
+                            <% else %>
+                                <%= link_to "Зарегистрироваться", register_path %> или
+                                <%= link_to "Войти", login_path %>
+                            <% end %>
+                        </div>
+                        <% flash.each do |name, msg| %>
+                            <%= content_tag :div, msg, :id => "flash_#{name}"%>
+                        <% end %>
 
-    <div class="container">
-        <div class="user_nav">
-            <% if current_user %>
-                Зашли как: <%= current_user.email %>
-                <%= link_to "Выйти", logout_path %>
-                <% if can? :index, :admin %>
-                    <%= link_to "Админка", admin_path %>
-                <% end %>
-            <% else %>
-                <%= link_to "Зарегистрироваться", register_path %> или
-                <%= link_to "Войти", login_path %>
-            <% end %>
-        </div>
-        <% flash.each do |name, msg| %>
-            <%= content_tag :div, msg, :id => "flash_#{name}"%>
-        <% end %>
+               <div id="nav" class="group">
+                <ol id="nav-block" >
+                        <li><a href="">Главная</a></li>
+                        <li><a href="">Калькулятор</a></li>
+                        <li><a href="">Контакты</a></li>
+                </ol>
+
+                </div>
+               
+               
+                </div>
+                
+ 
+
+     <div class="main-container">
         <%= yield %>
-    </div>
+     </div>  
+
+</div>      
+    
     <div id="footer">Copyright</div>
 </body>
 </html>
