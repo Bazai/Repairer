@@ -33,4 +33,17 @@ $(function() {
             data: "production_year_id=" + $("#production_year").val() + "&car_model_id=" + $("#car_model").val() + "&brand_id=" + $("#brand").val()
         });
     });
+
+    $('#add_part').live('click', function(){
+        console.log($("#existent_parts_ids").val());
+        $.ajax({
+            type: "get",
+            url: "/maintenances/addpart",
+            data: "part_id=" + $("#existent_parts_ids").val()
+        });
+    });
+
+    $('#remove_part').live('click', function(){
+        $('#remove_part').parent("div").remove();
+    });
 });

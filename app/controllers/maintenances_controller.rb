@@ -45,6 +45,8 @@ class MaintenancesController < ApplicationController
 
     respond_to do |format|
       if @maintenance.save
+        params[:exparts].each { |part| @maintenance.parts << Part.find(part) }
+
         format.html { redirect_to @maintenance, notice: 'Maintenance was successfully created.' }
         format.json { render json: @maintenance, status: :created, location: @maintenance }
       else
@@ -61,6 +63,8 @@ class MaintenancesController < ApplicationController
 
     respond_to do |format|
       if @maintenance.update_attributes(params[:maintenance])
+        params[:exparts].each { |part| @maintenance.parts << Part.find(part) }
+
         format.html { redirect_to @maintenance, notice: 'Maintenance was successfully updated.' }
         format.json { head :ok }
       else
@@ -80,5 +84,9 @@ class MaintenancesController < ApplicationController
       format.html { redirect_to maintenances_url }
       format.json { head :ok }
     end
+  end
+
+  def addpart
+    @part = Part.find(params[:part_id])
   end
 end

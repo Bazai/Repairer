@@ -2,6 +2,7 @@ Repairer::Application.routes.draw do
 
   get "estim/index"
   get "estim/showselects"
+  get "maintenances/addpart"
 
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
