@@ -1,0 +1,5 @@
+<%= simple_form_for @brand,:url => "modifications/update_brand", :remote => true do |f| %>
+    <%= f.input :id, :as => :hidden  %>
+    <%= f.input :name, :label => "Имя", :input_html => { :size => 20 } %>
+    <%= f.button :submit, "Сохранить", :id => "save_brand" %>
+<% end %>

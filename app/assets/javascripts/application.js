@@ -46,4 +46,14 @@ $(function() {
     $('#remove_part').live('click', function(){
         $('#remove_part').parent("div").remove();
     });
+//
+//    $('#remove_brand').live('click', function(){
+//        console.log(543);
+//        console.log($("#brands option:selected").text);
+//        $.ajax({
+//            type: "delete",
+//            url: "/modifications/remove_brand",
+//            data: "brand_id=" + $("#brands option:selected").val
+//        });
+//    });
 });

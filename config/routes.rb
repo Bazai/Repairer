@@ -23,6 +23,20 @@ Repairer::Application.routes.draw do
   # post "estimator" => "estimator#index"
   root :to => "users#new"
 
+
+
+
+  get "modifications/index"
+  post "modifications/add_brand"
+  put "modifications/update_brand"
+  post "modifications/edit_brand"
+  delete "modifications/remove_brand"
+  get "modifications" => "modifications#index"
+
+
+
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
