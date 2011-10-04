@@ -27,6 +27,7 @@ Repairer::Application.routes.draw do
 
 
   get "modifications/index"
+  get "modifications/clear_brand_form"
   post "modifications/add_brand"
   put "modifications/update_brand"
   post "modifications/edit_brand"

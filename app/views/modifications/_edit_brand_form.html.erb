@@ -1,3 +1,4 @@
+<h3>Изменить Бренд</h3>
 <%= simple_form_for @brand,:url => "modifications/update_brand", :remote => true do |f| %>
     <%= f.input :id, :as => :hidden  %>
     <%= f.input :name, :label => "Имя", :input_html => { :size => 20 } %>

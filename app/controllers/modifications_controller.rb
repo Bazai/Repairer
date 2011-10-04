@@ -40,4 +40,9 @@ class ModificationsController < ApplicationController
     get_brands()
   end
 
+
+  def clear_brand_form
+    @brand = Brand.new
+  end
+
 end

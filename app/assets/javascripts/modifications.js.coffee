@@ -11,6 +11,24 @@ jQuery ->
             data: "brand_id=" + $("#brands option:selected").val()
     )
 
+    $('a#add_brand').live('click', () ->
+        console.log($("#brands option:selected").text())
+        $("#brands option:selected").removeAttr("selected")
+#        $("#brand_form").html("<%= escape_javascript(render \"brand_list\") %>")
+        $.ajax
+            type: "get",
+            url: "/modifications/clear_brand_form"
+
+    )
+
+    $('#brands').live('change', () ->
+        console.log($("#brands option:selected").text())
+        $.ajax
+            type: "post",
+            url: "/modifications/edit_brand",
+            data: "brand_id=" + $("#brands option:selected").val()
+    )
+
 #    $('#save_brand').live('click', () ->
 #        console.log($("#brands option:selected").first().val())
 #        $.ajax
