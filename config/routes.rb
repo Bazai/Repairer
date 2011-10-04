@@ -18,12 +18,15 @@ Repairer::Application.routes.draw do
   resources :brands, :car_models, :production_years, :maintenances, :parts, :labors
   get "estimator/index"
   post "estimator/index"
+  get "estimator" => "estimator#index"
+  
   get "admin/index"
+  get "admin" => "admin#index"
+  
   get "admin/parse_csv"
   post "admin/parse_csv"
-  get "estimator" => "estimator#index"
   # post "estimator" => "estimator#index"
-  root :to => "users#new"
+  root :to => "estimator#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

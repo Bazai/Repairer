@@ -13,6 +13,7 @@
             <% if current_user %>
                 Зашли как: <%= current_user.email %>
                 <%= link_to "Выйти", logout_path %>
+                <%= link_to "Калькулятор", estimator_path %>
             <% else %>
                 <%= link_to "Зарегистрироваться", register_path %> или
                 <%= link_to "Войти", login_path %>

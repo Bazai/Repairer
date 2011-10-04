@@ -1,4 +1,6 @@
 class CarModelsController < ApplicationController
+  load_and_authorize_resource
+  
   layout 'admin'
   # GET /car_models
   # GET /car_models.json

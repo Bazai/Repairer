@@ -13,7 +13,11 @@
   <tr>
     <td><%= brand.name %></td>
     <td><%= link_to 'Показать', brand %></td>
-    <td><%= link_to 'Редактировать', edit_brand_path(brand) %></td>
+    <td>
+        <% if can? :manage, brand %>
+            <%= link_to 'Редактировать', edit_brand_path(brand) %>
+        <% end %>
+    </td>
     <td><%= link_to 'Удалить', brand, :method => 'delete', :confirm => "Вы уверены?" %></td>
   </tr>
 <% end %>
