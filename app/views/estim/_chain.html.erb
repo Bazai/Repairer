@@ -1,0 +1,20 @@
+<%= collection_select(:brand, :id, @brands, :id, :name, { :prompt => "Выбирай брэнд" },\
+    !@brand.blank? ? {:selected => @brand.id, :id => 'brand' } : {:id=> 'brand'} ) %>
+
+<% if @brand.blank? %>
+    <select name="" id=""></select>
+<% else %>
+    <%= collection_select(:car_model, :id, @car_models, :id, :name, {:prompt => "Модель автомобиля"}, \
+        !@car_model.blank? ? {:selected => @car_model.id, :id => 'car_model' } : {:id => 'car_model'} ) %>
+<% end %>
+
+<% if @car_model.blank? %>
+    <select name="" id=""></select>
+<% else %>
+<%= collection_select(:production_year, :id, @production_years, :id, :year, { :prompt => "Год выпуска" }, \
+    !@production_year.blank? ? {:selected => @production_year.id, :id => 'production_year' } : {:id => 'production_year'} ) %>
+<% end %>
+
+<% if ( !@brand.blank? && !@car_model.blank? && !@production_year.blank? ) %>
+    <p><%= @production_year.edit_header  %></p>
+<% end  %>

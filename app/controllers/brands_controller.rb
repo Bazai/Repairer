@@ -1,9 +1,12 @@
 class BrandsController < ApplicationController
+  load_and_authorize_resource
+  
   # GET /brands
   # GET /brands.json
   layout 'admin'
   def index
-    @brands = Brand.all
+    # @brands = Brand.all
+    # authorize! :update, @brands
 
     respond_to do |format|
       format.html # index.html.erb

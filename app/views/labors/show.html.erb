@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Модфикация:</b>
+  <%= @labor.maintenance.header %>
+</p>
+
+<p>
+  <b>Название:</b>
+  <%= @labor.name %>
+</p>
+
+<p>
+  <b>Описание:</b>
+  <%= @labor.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_labor_path(@labor) %> |
+<%= link_to 'Back', labors_path %>

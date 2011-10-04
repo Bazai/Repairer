@@ -8,3 +8,29 @@
 //= require jquery_ujs
 //= require cocoon
 //= require_tree .
+$(function() {
+    $('#brand').live('change', function(){
+        console.log($("#brand").val());
+        $.ajax({
+            type: "get",
+            url: "showselects",
+            data: "brand_id=" + $("#brand").val()
+        });
+    });
+    $('#car_model').live('change', function(){
+        console.log($("#car_model").val());
+        $.ajax({
+            type: "get",
+            url: "showselects",
+            data: "car_model_id=" + $("#car_model").val() + "&brand_id=" + $("#brand").val()
+        });
+    });
+    $('#production_year').live('change', function(){
+        console.log($("#production_year").val());
+        $.ajax({
+            type: "get",
+            url: "showselects",
+            data: "production_year_id=" + $("#production_year").val() + "&car_model_id=" + $("#car_model").val() + "&brand_id=" + $("#brand").val()
+        });
+    });
+});

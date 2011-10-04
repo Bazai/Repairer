@@ -9,6 +9,7 @@ gem "jquery-rails"
 gem 'sorcery'
 gem 'simple_form'
 gem 'cocoon'
+gem 'cancan'
 
 gem 'thin'
 gem 'heroku'

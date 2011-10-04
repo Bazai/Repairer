@@ -4,6 +4,7 @@ class AdminController < ApplicationController
 
   layout 'admin'
   def index
+    authorize! :index, :admin
   end
 
   def parse_csv
