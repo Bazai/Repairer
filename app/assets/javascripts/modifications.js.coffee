@@ -110,8 +110,7 @@ jQuery ->
         $.ajax
             type: "delete",
             url: "/modifications/remove_production_year",
-            data: "brand_id=" + $("#brands option:selected").val()\
-                  + "&car_model_id=" + $("#car_models option:selected").val()\
+            data: "&car_model_id=" + $("#car_models option:selected").val()\
                   + "&production_year_id=" + $("#production_years option:selected").val()
     )
 
@@ -121,7 +120,6 @@ jQuery ->
             type: "post",
             url: "/modifications/add_production_year",
             data: "[production_year][year]=" + $("#production_year_year").val()\
-                  + "&brand_id=" + $("#brands option:selected").val()\
                   + "&car_model_id=" + $("#car_models option:selected").val()
     )
 
@@ -131,8 +129,6 @@ jQuery ->
             type: "post",
             url: "/modifications/save_production_year",
             data: "[production_year][year]=" + $("#production_year_year").val()\
-#                  + "&brand_id=" + $("#brands option:selected").val()\
-#                  + "&car_model_id=" + $("#car_models option:selected").val()
                   + "&production_year_id=" + $("#production_years option:selected").val()
     )
 

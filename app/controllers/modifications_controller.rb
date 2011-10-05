@@ -63,6 +63,11 @@ class ModificationsController < ApplicationController
 
     @brand.delete
     get_brands()
+
+    @car_model = CarModel.new
+    @car_models = []
+    @production_year = ProductionYear.new
+    @production_years = []
   end
 
 
@@ -92,10 +97,12 @@ class ModificationsController < ApplicationController
 
     @car_model.save!
     get_car_models()
+
+    @production_year = ProductionYear.new
+    @production_years = []
   end
 
   def save_car_model
-    @brand = Brand.find(params[:brand_id])
     @car_model = CarModel.find(params[:car_model_id])
 
     @car_model.update_attributes!(params[:car_model])
@@ -108,6 +115,9 @@ class ModificationsController < ApplicationController
 
     @car_model.delete
     get_car_models()
+
+    @production_year = ProductionYear.new
+    @production_years = []
   end
 
 
@@ -117,15 +127,10 @@ class ModificationsController < ApplicationController
   end
 
   def edit_production_year
-    #@brand = Brand.find(params[:brand_id])
-    #@car_models = @brand.car_models
-    #@car_model = CarModel.find(params[:car_model_id])
-    #@production_years = @car_model.production_years
     @production_year = ProductionYear.find(params[:production_year_id])
   end
 
   def add_production_year
-    #@brand = Brand.find(params[:brand_id])
     @car_model = CarModel.find(params[:car_model_id])
     @production_year = ProductionYear.new(:year => params[:production_year][:year])
     @production_year.car_model = @car_model
@@ -140,7 +145,6 @@ class ModificationsController < ApplicationController
   end
 
   def remove_production_year
-    #@brand = Brand.find(params[:brand_id])
     @car_model = CarModel.find(params[:car_model_id])
     @production_year = ProductionYear.find(params[:production_year_id])
 
