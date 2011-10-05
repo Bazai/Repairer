@@ -1,18 +1,20 @@
 # encoding: utf-8
+<div id="loginform">
 <h1>Авторизация</h1>
-
 <%= form_tag sessions_path do %>
     <div class="field">
         <%= label_tag :email %>
         <%= text_field_tag :email, params[:email] %>
     </div>
     <div class="field">
-        <%= label_tag :password %>
+        <%= label_tag 'Пароль' %>
         <%= password_field_tag :password, params[:password] %>
     </div>
     <div class="field">
         <%= check_box_tag :remember_me, 1, params[:remember_me] %>
-        <%= label_tag :remember_me %>
+        <%= label_tag 'Запомнить меня' %>
     </div>
     <div class="actions"><%= submit_tag "Войти" %></div>
 <% end %>
+
+</div>

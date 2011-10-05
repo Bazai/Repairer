@@ -100,12 +100,26 @@ input, select {
 #wrap{width:960px; margin:20px auto;  }
 #header{position:relative;}
 #footer{border-top:1px solid #ccc;}
+/*---Messages---*/
+#flash_notice {text-align:center; background:#bac5dc; padding:10px 0;}
+.close{float:right; cursor:pointer; text-decoration:underline;}
 /*---logo---*/
 
 #logo {font-family:Arial; font-size:44px; float:left;  }
 
 /*---login-block---*/
-#login-block{position:absolute; right:0; top:0;} 
+#login-block{position:absolute; right:0; top:0;}
+
+
+/*-----------*/
+/*---forms---*/
+/*-----------*/
+
+
+/*---regform---*/
+#regform {float:left;}
+.field  {clear:both; text-align:right; line-height:25px;}
+#regform label  {float:left; padding-right:10px;}
 
 /*--- nav --- */
 #nav {float:right; margin:25px 0 0 0;}

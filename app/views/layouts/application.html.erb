@@ -10,13 +10,17 @@
 </head>
 
 <body>
-
+ <div><% flash.each do |name, msg| %>
+                            <%= content_tag :div, msg, :id => "flash_#{name}"%>
+                 <% end %></div>
 <div id="wrap">
 
    <div id="header" class="group">
                 <h1 id="logo">Avtologi</h1>
                 
                 <div id="login-block">
+               
+                 
                  <% if current_user %>
                                 Зашли как: <%= current_user.email %>
                                 <%= link_to "Выйти", logout_path %>
@@ -24,13 +28,11 @@
                                     <%= link_to "Админка", admin_path,  %>
                                 <% end %>
                             <% else %>
-                                <%= link_to "Зарегистрироваться", register_path, :class => "example8" %> или
-                                <%= link_to "Войти", login_path %>
+                                <%= link_to "Зарегистрироваться", register_path, :class => "regform" %> или
+                                <%= link_to "Войти", login_path, :class => "loginform" %>
                             <% end %>
                         </div>
-                        <% flash.each do |name, msg| %>
-                            <%= content_tag :div, msg, :id => "flash_#{name}"%>
-                        <% end %>
+                        
 
                <div id="nav" class="group">
                 <ol id="nav-block" >

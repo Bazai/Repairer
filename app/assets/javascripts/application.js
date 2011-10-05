@@ -13,8 +13,21 @@
 
 
 $(function() {
-    $(".example8").colorbox({iframe:true, innerWidth:425, innerHeight:344});
-       
+/*---colorbox login and reg---*/
+$(".regform").colorbox({href: "/register #regform", opacity: 0.1, top: 0 });
+$(".loginform").colorbox({href: "/login #loginform", opacity: 0.1, top: 0 });   
+     
+/*---top msg---*/    
+$('#flash_notice')
+.append('<span class="close">Закрыть</span>')
+.click(function() {
+$('#flash_notice').toggle('slow');
+});
+    
+    
+    $("").togle 
+     
+     
     /*$('#brand').live('change', function(){
         console.log($("#brand").val());
         $.ajax({
