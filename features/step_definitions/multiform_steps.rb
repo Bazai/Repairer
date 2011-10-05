@@ -13,5 +13,5 @@ When /^есть Модель "([^"]*)"$/ do |name|
   @car_model = CarModel.create(:name => name, :brand => @brand)
 end
 When /^есть Год Выпуска "([^"]*)"$/ do |year|
-  @production_year = ProductionYear.create(:year => year)
+  @production_year = ProductionYear.create(:year => year, :car_model => @car_model)
 end
