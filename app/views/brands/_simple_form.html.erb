@@ -1,0 +1,4 @@
+<%= simple_form_for @brand, :remote => true do |f| %>
+        <%= f.input :name, :label => "Имя", :input_html => { :size => 20 } %>
+        <%= f.button :submit %>
+<% end %>

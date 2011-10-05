@@ -2,7 +2,7 @@
 
   <%= f.association :production_year, :collection => ProductionYear.all.map \
    { |r| [r.edit_header, r.id, r.id] }, :prompt => "Выберите модификацию" %>
-<!--"#{r.car_model.brand.name} - #{r.car_model.name} - #{r.year}"-->
+
   <div class="inputs">
     <%= f.input :description %>
     <%= f.input :price %>
@@ -17,6 +17,12 @@
     <div class="links">
         <%= link_to_add_association "Добавить работу", f, :labors %>
     </div>
+
+
+    <h3>Добавить существующую часть</h3>
+    <%= select_tag "existent_parts_ids", options_from_collection_for_select(Part.all, :id, :name) %>
+    <a id="add_part" href="#">Добавить часть</a>
+    <div id="existent_parts" remote="true"></div>
 
   <% if !@maintenance.parts.blank? %>
     <h3>Детали</h3>
