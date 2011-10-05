@@ -1,0 +1,13 @@
+<%= simple_form_for(@labor) do |f| %>
+  <%= f.association :maintenance, :collection => Maintenance.all.map \
+   { |r| [r.header, r.id, r.id] }, :prompt => "Выберите Обслуживание" %>
+
+  <div class="inputs">
+    <%= f.input :name %>
+    <%= f.input :description %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -1,3 +1,13 @@
 // Place all the styles related to the estimator controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#estimator-form{margin:20px 0; background:#ccc; -moz-border-radius:5px; padding:20px 20px 10px 20px;}
+#estimator-form ol li{list-style:none; float:left; margin:0 0 10px 0;}
+#estimator-form .brand-logo{width:106px; height:75px; float:left;}
+
+#input-mantance {width:700px; height:40px;}
+#estimator-form #submit {height:46px; cursor:pointer;}
+
+#slider {}
+

@@ -1,5 +1,7 @@
 # encoding: utf-8
-<h1>ESTIMATOR</h1>
+
+<div id="estimator-form">
+<div class="brand-logo">Brand logo</div>
 <%#= params.inspect %>
 <% if !params[:brand].blank? %>
 <%= "А ты выбрал: " + Brand.find(params[:brand][:id]).name unless params[:brand][:id].empty? %>
@@ -7,10 +9,14 @@
 
 <% end %>
 <%= form_tag do %>
-    <%= collection_select(*@brands_select_params) %>
-    <%= collection_select(*@car_models_select_params) %>
-    <%= collection_select(*@production_years_select_params) %>
-<%= submit_tag "Отправить", :id => "submit", :name => "submit" %>
+    <ol class="group">
+    <li><%= collection_select(*@brands_select_params) %></li>
+    <li><%= collection_select(*@car_models_select_params) %></li>
+    <li><%= collection_select(*@production_years_select_params) %></li>
+    <li><input id="input-mantance" type="text" /></li>
+    <li><%= submit_tag "Отправить", :id => "submit", :name => "submit" %></li>
+    </ol>
+
 <% end -%>
 <% if !@issues.nil? %>
     <ul>
@@ -22,3 +28,10 @@
     <% end %>
     </ul>
 <% end %>
+</div>
+
+<div id="slider">
+<%= image_tag("welcome_screen2.jpg", :alt => "rss feed") %>
+</div>
+
+

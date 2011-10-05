@@ -1,4 +1,6 @@
 class ProductionYearsController < ApplicationController
+  load_and_authorize_resource
+  
   layout 'admin'
   # GET /production_years
   # GET /production_years.json

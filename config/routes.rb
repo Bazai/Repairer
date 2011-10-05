@@ -1,8 +1,12 @@
 Repairer::Application.routes.draw do
+
+  get "estim/index"
+  get "estim/showselects"
+
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   get "register" => "users#new", :as => "register"
-  resources :users, :sessions, :admin
+  resources :users, :sessions #, :admin
   
   # resources :brands do
   #     resources :car_models do
@@ -11,12 +15,18 @@ Repairer::Application.routes.draw do
   #       end
   #     end
   #   end
-  resources :brands, :car_models, :production_years, :issues
+  resources :brands, :car_models, :production_years, :maintenances, :parts, :labors
   get "estimator/index"
   post "estimator/index"
   get "estimator" => "estimator#index"
+  
+  get "admin/index"
+  get "admin" => "admin#index"
+  
+  get "admin/parse_csv"
+  post "admin/parse_csv"
   # post "estimator" => "estimator#index"
-  root :to => "users#new"
+  root :to => "estimator#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
