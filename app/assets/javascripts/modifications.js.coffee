@@ -132,3 +132,20 @@ jQuery ->
                   + "&production_year_id=" + $("#production_years option:selected").val()
     )
 
+
+    $("#cancel_save_brand").live('click', () ->
+        $("#add_brand").text("Добавить")
+        $("#cancel_save_brand").remove()
+    )
+
+    $("#cancel_save_car_model").live('click', () ->
+        $("#add_car_model").text("Добавить")
+        $("#cancel_save_car_model").remove()
+    )
+
+    $("#cancel_save_production_year").live('click', () ->
+        $("#add_production_year").text("Добавить")
+        $("#cancel_save_production_year").remove()
+    )
+
+
