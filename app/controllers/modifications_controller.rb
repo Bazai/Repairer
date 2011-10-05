@@ -106,7 +106,6 @@ class ModificationsController < ApplicationController
     @car_model = CarModel.find(params[:car_model_id])
 
     @car_model.update_attributes!(params[:car_model])
-    get_car_models()
   end
 
   def remove_car_model
