@@ -16,3 +16,14 @@ class ProductionYear < ActiveRecord::Base
     self.year.to_s + ", " + self.car_model.brand.name + " " + self.car_model.name
   end
 end
+# == Schema Information
+#
+# Table name: production_years
+#
+#  id           :integer         not null, primary key
+#  year         :integer
+#  car_model_id :integer
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+

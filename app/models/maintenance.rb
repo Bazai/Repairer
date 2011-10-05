@@ -12,3 +12,15 @@ class Maintenance < ActiveRecord::Base
     self.production_year.edit_header + ", " + self.description
   end
 end
+# == Schema Information
+#
+# Table name: maintenances
+#
+#  id                 :integer         not null, primary key
+#  description        :string(255)
+#  price              :integer
+#  production_year_id :integer
+#  created_at         :datetime
+#  updated_at         :datetime
+#
+
