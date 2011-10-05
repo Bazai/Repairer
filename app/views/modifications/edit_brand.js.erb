@@ -1,2 +1,5 @@
-console.log("showing edit form");
-$("#brand_form").html('<%= escape_javascript(render "edit_brand_form") %>');
+$("#save_brand_title").html("Изменить Бренд");
+$("#save_brand_block").html('<a href="#" id="update_save_brand">Сохранить</a>');
+$("#brand_name").val("<%=@brand.name%>");
+
+$("#car_model_list").html('<%= escape_javascript(render "car_model_list") %>');

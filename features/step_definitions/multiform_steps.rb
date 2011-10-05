@@ -7,5 +7,8 @@ end
   find_by_id(field).text.should_not =~ /#{value}/
 end
 When /^у меня есть Бренд "([^"]*)"$/ do |name|
-  Brand.create!(:name => name)
+  @brand = Brand.create(:name => name)
+end
+When /^у меня есть Модель "([^"]*)"$/ do |name|
+  @car_model = CarModel.create(:name => name, :brand => @brand)
 end

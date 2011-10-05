@@ -1,0 +1,6 @@
+<h3 id="save_car_model_title">Добавить Модель</h3>
+<%= simple_form_for @car_model do |f| %>
+    <%= f.input :name, :label => "Название", :input_html => { :size => 20 } %>
+    <%= f.input :description, :label => "Описание", :input_html => { :size => 20 } %>
+<% end %>
+<div id="save_car_model_block"><a href="#" id="add_save_car_model">Добавить</a></div>

@@ -1,48 +1,92 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
-
 jQuery ->
+    # Выделение Бренда в списке
+    $('#brands').live('change', () ->
+        $.ajax
+            type: "get",
+            url: "/modifications/edit_brand",
+            data: "id=" + $("#brands option:selected").val()
+    )
+
+    # Изменение формы для добавление Бренда
+    $('#add_brand').live('click', () ->
+        $("#brands option:selected").removeAttr("selected")
+        $.ajax
+            type: "get",
+            url: "/modifications/new_brand"
+    )
+
+    # Удаление Бренда
     $('#remove_brand').live('click', () ->
-        console.log($("#brands option:selected").text())
         $.ajax
             type: "delete",
             url: "/modifications/remove_brand",
-            data: "brand_id=" + $("#brands option:selected").val()
+            data: "id=" + $("#brands option:selected").val()
     )
 
-    $('a#add_brand').live('click', () ->
-        console.log($("#brands option:selected").text())
-        $("#brands option:selected").removeAttr("selected")
-#        $("#brand_form").html("<%= escape_javascript(render \"brand_list\") %>")
+    # Сохранение Нового Бренда
+    $('#add_save_brand').live('click', () ->
+        $.ajax
+            type: "post",
+            url: "/modifications/add_brand",
+            data: "name=" + $("#brand_name").val()
+    )
+
+    # Изменение Бренда
+    $('#update_save_brand').live('click', () ->
+        $.ajax
+            type: "post",
+            url: "/modifications/save_brand",
+            data: "id=" + $("#brands option:selected").val() + "&name=" + $("#brand_name").val()
+    )
+
+
+
+    # Выделение Модели в списке
+    $('#car_models').live('change', () ->
         $.ajax
             type: "get",
-            url: "/modifications/clear_brand_form"
-
+            url: "/modifications/edit_car_model",
+            data: "brand_id=" + $("#brands option:selected").val()\
+                  + "&car_model_id=" + $("#car_models option:selected").val()
     )
 
-    $('#brands').live('change', () ->
-        console.log($("#brands option:selected").text())
+    # Изменение формы для добавление Модели
+    $('#add_car_model').live('click', () ->
+        $("#car_model option:selected").removeAttr("selected")
         $.ajax
-            type: "post",
-            url: "/modifications/edit_brand",
+            type: "get",
+            url: "/modifications/new_car_model",
             data: "brand_id=" + $("#brands option:selected").val()
     )
 
-#    $('#save_brand').live('click', () ->
-#        console.log($("#brands option:selected").first().val())
-#        $.ajax
-#            type: "post",
-#            url: "/modifications/update_brand",
-#            data: "brand_id=" + $("#brands option:selected").val() + "&brand_name=" + $("#brand_name").val()
-#    )
+    # Удаление Модели
+    $('#remove_car_model').live('click', () ->
+        $.ajax
+            type: "delete",
+            url: "/modifications/remove_car_model",
+            data: "brand_id=" + $("#brands option:selected").val()\
+                  + "&car_model_id=" + $("#car_models option:selected").val()
+    )
 
-    $('#edit_brand').live('click', () ->
-        console.log($("#brands option:selected").val())
+    # Добавление новой Модели
+    $('#add_save_car_model').live('click', () ->
         $.ajax
             type: "post",
-            url: "/modifications/edit_brand",
-            data: "brand_id=" + $("#brands option:selected").val()
-
-#        $("#brand_name").val($("#brands option:selected").text())
+            url: "/modifications/add_car_model",
+            data: "[car_model][name]=" + $("#car_model_name").val()\
+                  + "&[car_model][description]=" + $("#car_model_description").val()\
+                  + "&brand_id=" + $("#brands option:selected").val()\
+                  + "&car_model_id=" + $("#car_models option:selected").val()
     )
+
+    # Сохранение изменений Модели
+    $('#update_save_car_model').live('click', () ->
+        $.ajax
+            type: "post",
+            url: "/modifications/save_car_model",
+            data: "[car_model][name]=" + $("#car_model_name").val()\
+                  + "&[car_model][description]=" + $("#car_model_description").val()\
+                  + "&brand_id=" + $("#brands option:selected").val()\
+                  + "&car_model_id=" + $("#car_models option:selected").val()
+    )
+

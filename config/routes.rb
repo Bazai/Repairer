@@ -27,12 +27,19 @@ Repairer::Application.routes.draw do
 
 
   get "modifications/index"
-  get "modifications/clear_brand_form"
-  post "modifications/add_brand"
-  put "modifications/update_brand"
-  post "modifications/edit_brand"
-  delete "modifications/remove_brand"
   get "modifications" => "modifications#index"
+
+  post "modifications/add_brand"
+  post "modifications/save_brand"
+  get "modifications/new_brand"
+  get "modifications/edit_brand"
+  delete "modifications/remove_brand"
+
+  post "modifications/add_car_model"
+  post "modifications/save_car_model"
+  get "modifications/new_car_model"
+  get "modifications/edit_car_model"
+  delete "modifications/remove_car_model"
 
 
 
