@@ -21,10 +21,10 @@
                                 Зашли как: <%= current_user.email %>
                                 <%= link_to "Выйти", logout_path %>
                                 <% if can? :index, :admin %>
-                                    <%= link_to "Админка", admin_path %>
+                                    <%= link_to "Админка", admin_path,  %>
                                 <% end %>
                             <% else %>
-                                <%= link_to "Зарегистрироваться", register_path %> или
+                                <%= link_to "Зарегистрироваться", register_path, :class => "example8" %> или
                                 <%= link_to "Войти", login_path %>
                             <% end %>
                         </div>
@@ -34,7 +34,7 @@
 
                <div id="nav" class="group">
                 <ol id="nav-block" >
-                        <li><a href="">Главная</a></li>
+                        <li><a class="example8" href="">Главная</a></li>
                         <li><a href="">Калькулятор</a></li>
                         <li><a href="">Контакты</a></li>
                 </ol>
@@ -51,7 +51,7 @@
      </div>  
 
 </div>      
-    
+    <div id="inline_example1">HHHssiiiidddpppaa</div>
     <div id="footer">Copyright</div>
 </body>
 </html>
