@@ -1,0 +1,5 @@
+<h3 id="save_brand_title">Добавить Бренд</h3>
+<%= simple_form_for @brand do |f| %>
+    <%= f.input :name, :label => "Имя", :input_html => { :size => 20 } %>
+<% end %>
+<div id="save_brand_block"><a href="#" id="add_save_brand">Добавить</a></div>

@@ -38,6 +38,12 @@ class MaintenancesController < ApplicationController
     @maintenance = Maintenance.find(params[:id])
   end
 
+  def add_existing_parts
+    if (!params[:exparts].blank?)
+      params[:exparts].each { |part| @maintenance.parts << Part.find(part) }
+    end
+  end
+
   # POST /maintenances
   # POST /maintenances.json
   def create
@@ -45,6 +51,8 @@ class MaintenancesController < ApplicationController
 
     respond_to do |format|
       if @maintenance.save
+        add_existing_parts()
+
         format.html { redirect_to @maintenance, notice: 'Maintenance was successfully created.' }
         format.json { render json: @maintenance, status: :created, location: @maintenance }
       else
@@ -61,6 +69,8 @@ class MaintenancesController < ApplicationController
 
     respond_to do |format|
       if @maintenance.update_attributes(params[:maintenance])
+        add_existing_parts()
+
         format.html { redirect_to @maintenance, notice: 'Maintenance was successfully updated.' }
         format.json { head :ok }
       else
@@ -80,5 +90,9 @@ class MaintenancesController < ApplicationController
       format.html { redirect_to maintenances_url }
       format.json { head :ok }
     end
+  end
+
+  def addpart
+    @part = Part.find(params[:part_id])
   end
 end

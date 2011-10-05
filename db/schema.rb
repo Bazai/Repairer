@@ -39,6 +39,14 @@ ActiveRecord::Schema.define(:version => 20111003121535) do
 
   add_index "cars", ["brand_id"], :name => "index_cars_on_brand_id"
 
+  create_table "issues", :force => true do |t|
+    t.string   "description"
+    t.integer  "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "production_year_id"
+  end
+
   create_table "labors", :force => true do |t|
     t.string   "name"
     t.string   "description"
@@ -46,16 +54,6 @@ ActiveRecord::Schema.define(:version => 20111003121535) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "maintenances", :force => true do |t|
-    t.string   "description"
-    t.integer  "price"
-    t.integer  "production_year_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "maintenances", ["production_year_id"], :name => "index_maintenances_on_production_year_id"
 
   create_table "maintenances_parts", :id => false, :force => true do |t|
     t.integer "maintenance_id"
@@ -77,6 +75,11 @@ ActiveRecord::Schema.define(:version => 20111003121535) do
   end
 
   add_index "production_years", ["car_model_id"], :name => "index_production_years_on_car_model_id"
+
+  create_table "production_years_issues", :id => false, :force => true do |t|
+    t.integer "production_year_id"
+    t.integer "issue_id"
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"

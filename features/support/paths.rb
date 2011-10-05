@@ -15,6 +15,9 @@ module NavigationHelpers
     when /^Админка$/
       '/admin'
     
+    when /^Модификации/
+      '/modifications'
+
     when /^Эстиматор$/
       '/estimator/index'
 

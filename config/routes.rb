@@ -2,6 +2,7 @@ Repairer::Application.routes.draw do
 
   get "estim/index"
   get "estim/showselects"
+  get "maintenances/addpart"
 
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
@@ -27,6 +28,34 @@ Repairer::Application.routes.draw do
   post "admin/parse_csv"
   # post "estimator" => "estimator#index"
   root :to => "estimator#index"
+
+
+
+
+  get "modifications/index"
+  get "modifications" => "modifications#index"
+
+  post "modifications/add_brand"
+  post "modifications/save_brand"
+  get "modifications/new_brand"
+  get "modifications/edit_brand"
+  delete "modifications/remove_brand"
+
+  post "modifications/add_car_model"
+  post "modifications/save_car_model"
+  get "modifications/new_car_model"
+  get "modifications/edit_car_model"
+  delete "modifications/remove_car_model"
+
+  post "modifications/add_production_year"
+  post "modifications/save_production_year"
+  get "modifications/new_production_year"
+  get "modifications/edit_production_year"
+  delete "modifications/remove_production_year"
+
+
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
