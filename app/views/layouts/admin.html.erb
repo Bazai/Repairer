@@ -22,6 +22,7 @@
         <% flash.each do |name, msg| %>
             <%= content_tag :div, msg, :id => "flash_#{name}"%>
         <% end %>
+        <%= link_to "АЛЬТЕРНАТИВНЫЙ ДОБАВЛЯТЕЛЬ", modifications_path %>
         <%= link_to "Брэнды", brands_path %>
         <%= link_to "Модели", car_models_path %>
         <%= link_to "Годы производства", production_years_path %>
