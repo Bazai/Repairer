@@ -25,11 +25,17 @@
       <%= render 'car_model_form' %>
     </div>
 
-
   </div>
 
   <div class="inner">
     <h3>Годы производства</h3>
+    <div id="production_year_list"><%= render "production_year_list" %></div>
+    <a href="#" id="add_production_year">Добавить</a>
+    <a href="#" id="remove_production_year">Удалить</a>
+    <br />
+    <div id="production_year_form">
+      <%= render 'production_year_form' %>
+    </div>
 
   </div>
 

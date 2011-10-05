@@ -41,6 +41,12 @@ Repairer::Application.routes.draw do
   get "modifications/edit_car_model"
   delete "modifications/remove_car_model"
 
+  post "modifications/add_production_year"
+  post "modifications/save_production_year"
+  get "modifications/new_production_year"
+  get "modifications/edit_production_year"
+  delete "modifications/remove_production_year"
+
 
 
 

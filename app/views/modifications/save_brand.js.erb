@@ -1,2 +1,1 @@
-$("#brand_list").html('<%= escape_javascript(render "brand_list") %>');
-$("#brand_form").html('<%= escape_javascript(render "brand_form") %>');
+$("#brands option:selected").text('<%=@brand.name %>');

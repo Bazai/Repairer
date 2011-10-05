@@ -1,2 +1,1 @@
-$("#car_model_form").html('<%= escape_javascript(render "car_model_form") %>');
-$("#car_model_list").html('<%= escape_javascript(render "car_model_list") %>');
+$("#car_models option:selected").text('<%=@car_model.name %>');

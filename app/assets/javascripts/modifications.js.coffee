@@ -1,18 +1,13 @@
 jQuery ->
     # Выделение Бренда в списке
     $('#brands').live('change', () ->
-        $.ajax
-            type: "get",
-            url: "/modifications/edit_brand",
-            data: "id=" + $("#brands option:selected").val()
+        $.get("/modifications/edit_brand", "id=" + $("#brands option:selected").val())
     )
 
     # Изменение формы для добавление Бренда
     $('#add_brand').live('click', () ->
         $("#brands option:selected").removeAttr("selected")
-        $.ajax
-            type: "get",
-            url: "/modifications/new_brand"
+        $.get("/modifications/new_brand")
     )
 
     # Удаление Бренда
@@ -52,7 +47,7 @@ jQuery ->
 
     # Изменение формы для добавление Модели
     $('#add_car_model').live('click', () ->
-        $("#car_model option:selected").removeAttr("selected")
+        $("#car_models option:selected").removeAttr("selected")
         $.ajax
             type: "get",
             url: "/modifications/new_car_model",
@@ -75,8 +70,7 @@ jQuery ->
             url: "/modifications/add_car_model",
             data: "[car_model][name]=" + $("#car_model_name").val()\
                   + "&[car_model][description]=" + $("#car_model_description").val()\
-                  + "&brand_id=" + $("#brands option:selected").val()\
-                  + "&car_model_id=" + $("#car_models option:selected").val()
+                  + "&brand_id=" + $("#brands option:selected").val()
     )
 
     # Сохранение изменений Модели
@@ -88,5 +82,57 @@ jQuery ->
                   + "&[car_model][description]=" + $("#car_model_description").val()\
                   + "&brand_id=" + $("#brands option:selected").val()\
                   + "&car_model_id=" + $("#car_models option:selected").val()
+    )
+
+
+
+    # Выделение Года в списке
+    $('#production_years').live('change', () ->
+        $.ajax
+            type: "get",
+            url: "/modifications/edit_production_year",
+            data: "brand_id=" + $("#brands option:selected").val()\
+                  + "&car_model_id=" + $("#car_models option:selected").val()\
+                  + "&production_year_id=" + $("#production_years option:selected").val()
+    )
+
+    # Изменение формы для добавление Года
+    $('#add_production_year').live('click', () ->
+        $("#production_years option:selected").removeAttr("selected")
+        $.ajax
+            type: "get",
+            url: "/modifications/new_production_year",
+            data: "production_year_id=" + $("#production_years option:selected").val()
+    )
+
+    # Удаление Года
+    $('#remove_production_year').live('click', () ->
+        $.ajax
+            type: "delete",
+            url: "/modifications/remove_production_year",
+            data: "brand_id=" + $("#brands option:selected").val()\
+                  + "&car_model_id=" + $("#car_models option:selected").val()\
+                  + "&production_year_id=" + $("#production_years option:selected").val()
+    )
+
+    # Добавление нового Года
+    $('#add_save_production_year').live('click', () ->
+        $.ajax
+            type: "post",
+            url: "/modifications/add_production_year",
+            data: "[production_year][year]=" + $("#production_year_year").val()\
+                  + "&brand_id=" + $("#brands option:selected").val()\
+                  + "&car_model_id=" + $("#car_models option:selected").val()
+    )
+
+    # Сохранение изменений Года
+    $('#update_save_production_year').live('click', () ->
+        $.ajax
+            type: "post",
+            url: "/modifications/save_production_year",
+            data: "[production_year][year]=" + $("#production_year_year").val()\
+#                  + "&brand_id=" + $("#brands option:selected").val()\
+#                  + "&car_model_id=" + $("#car_models option:selected").val()
+                  + "&production_year_id=" + $("#production_years option:selected").val()
     )
 
