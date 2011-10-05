@@ -11,6 +11,8 @@ gem 'simple_form'
 gem 'cocoon'
 gem 'cancan'
 gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
+gem 'carrierwave'
+gem 'mini_magick'
 
 gem 'thin'
 gem 'heroku'
