@@ -1,8 +1,4 @@
 class ModificationsController < ApplicationController
-  respond_to :js
-  before_filter :get_brands
-  #after_filter :get_brands, :only => [:add_brand, :save_brand, :remove_brand]
-  
   layout 'admin'
 
   def clear
