@@ -1,3 +1,4 @@
+# encoding: utf-8
 class AdminController < ApplicationController
   # require 'fastercsv'
   require 'csv'
@@ -41,7 +42,56 @@ class AdminController < ApplicationController
   end
   
   def parse_maintenance_csv
-    
-    
+    if !params[:file].nil?
+      csv = CSV.new(params[:file].tempfile, :headers => true, :col_sep => ";" )
+      
+      # TODO удалить нахрен когда закончишь
+      Maintenance.delete_all
+      
+      csv.each do |row|
+        debug_row(row)
+        
+        brand = Brand.find_by_name(row["brand"].to_s)
+        if brand.nil? || brand.blank?
+          puts "Неизвестный брэнд #{row["brand"]}, сначала создайте такой брэнд. Перехожу к следующей строке."
+          next
+        end
+        
+        car_model = CarModel.where("name like ? AND brand_id = ?", row["model"].to_s, brand)
+        if car_model.nil? || car_model.blank?
+          puts "Неизвестная модель #{row["model"]}, сначала создайте такую модель. Перехожу к следующей строке."
+          next
+        end
+        
+        production_year = ProductionYear.find_by_year_and_car_model_id(row["year"].to_s, car_model)
+        if production_year.nil? || production_year.blank?
+          puts "Неизвестный год выпуска #{row["model"]} - #{row["year"]}, сначала создайте такой год. Перехожу к следующей строке."
+          next
+        end
+        
+        maintenance = Maintenance.new(description: row["maintenance"], mileage: row["maintenance"].to_i, production_year: production_year)
+        if maintenance.valid?
+          puts "Обслуживание проходит валидацию"
+          maintenance.save!
+          maintenance.inspect
+        else
+          puts "Обслуживание не вышло лицом, есть уже такое, скорее всего"
+        end
+        # puts maintenance.inspect
+        
+        # puts console.log "Brand: #{row["brand"]}, Model: #{row["model"]}" 
+      end
+    end
   end
+  
+  def debug_row(row)
+    puts "Brand: #{row["brand"]}, Model: #{row["model"]}, Year: #{row["year"]}, " \
+         + "Maintenance: #{row["maintenance"]}, Labor: #{row["labor"]}"
+    if row["labor"].include? "Replace"
+      part = row["labor"].gsub(/Replace\s/, '')
+      puts "Parts detected: #{part}" 
+    end
+    puts "End\n\n"
+  end
+  
 end

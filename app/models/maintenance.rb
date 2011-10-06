@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Maintenance < ActiveRecord::Base
   belongs_to :production_year
 
@@ -6,7 +7,13 @@ class Maintenance < ActiveRecord::Base
 
   accepts_nested_attributes_for :labors, :allow_destroy => true, :reject_if => proc { |a| a[:name].blank? }
   accepts_nested_attributes_for :parts, :allow_destroy => true, :reject_if => proc { |a| a[:name].blank? }
+  
+  validate :validate_description_uniqueness_inside_production_year
 
+
+  def validate_description_uniqueness_inside_production_year
+    self.errors.add(:description, "обслуживания должно быть уникально, в рамках родительского года выпуска") if self.production_year.has_maintenance?(self.description)
+  end
 
   def header
     self.production_year.edit_header + ", " + self.description

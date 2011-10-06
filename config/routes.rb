@@ -26,6 +26,8 @@ Repairer::Application.routes.draw do
   
   get "admin/parse_csv"
   post "admin/parse_csv"
+  get "admin/parse_maintenance_csv"
+  post "admin/parse_maintenance_csv"
   # post "estimator" => "estimator#index"
   root :to => "estimator#index"
 
