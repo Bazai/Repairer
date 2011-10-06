@@ -1,5 +1,5 @@
 # encoding: utf-8
-<h2>Добавление Брендов, Моделей, Годов Производства</h2>
+<h2>Управление модификациями</h2>
 
 <div class="wrapper">
   <div class="inner">
@@ -39,5 +39,59 @@
 
   </div>
 
+
+</div>
+<div class="clear"></div>
+<h2>Управление Обслуживаниями</h2>
+<div class="wrapper">
+
+  <div class="inner">
+    <h3>Обслуживания</h3>
+    <div id="maintenance_list"><%= render "maintenance_list" %></div>
+    <a href="#" id="add_maintenance">Добавить</a>
+    <a href="#" id="remove_maintenance">Удалить</a>
+    <br />
+    <div id="maintenance_form">
+      <%= render 'maintenance_form' %>
+    </div>
+
+  </div>
+
+
+  <div class="inner">
+    <h3>Работы</h3>
+    <div id="labor_list"><%= render "labor_list" %></div>
+    <a href="#" id="add_labor">Добавить</a>
+    <a href="#" id="remove_labor">Удалить</a>
+    <br />
+    <div id="labor_form">
+      <%= render 'labor_form' %>
+    </div>
+
+  </div>
+
+  <div class="inner">
+    <h3>Части</h3>
+    <div id="part_list"><%= render "part_list" %></div>
+    <a href="#" id="add_part">Добавить</a>
+    <a href="#" id="remove_part">Удалить</a>
+    <br />
+    <div id="part_form">
+      <%= render 'part_form' %>
+    </div>
+
+  </div>
+
+  <div class="clear"></div>
+  <br>
+
+  <div class="inner">
+    <h3>Добавить существующую часть</h3>
+    <!--<a href="#" class="add_ex_part_form">Добавить существующую часть</a><br>-->
+    <label for="search_ex_part">Поиск</label>
+    <input type="text" id="search_ex_part" size="20">
+    <div id="all_part_list"><%= render "all_part_list" %></div>
+    <a href="#" id="add_ex_part">Добавить</a>
+  </div>
 
 </div>

@@ -38,13 +38,13 @@ $(function() {
         console.log($("#existent_parts_ids").val());
         $.ajax({
             type: "get",
-            url: "/maintenances/addpart",
+            url: "/maintenances/addexpart",
             data: "part_id=" + $("#existent_parts_ids").val()
         });
     });
 
-    $('#remove_part').live('click', function(){
-        $('#remove_part').parent("div").remove();
+    $('#remove_ex_part').live('click', function(){
+        $('#remove_ex_part').parent("div").remove();
     });
 //
 //    $('#remove_brand').live('click', function(){

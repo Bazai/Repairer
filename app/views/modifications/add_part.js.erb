@@ -1,0 +1,7 @@
+console.log("added");
+$("#part_list").html('<%= escape_javascript(render "part_list") %>');
+
+$('#part_list option[value="<%= @part.id %>"]').attr("selected", "selected");
+$("#add_part").text("Добавить");
+$("#save_part_title").html("Изменить Часть");
+$("#save_part_block").html('<a href="#" id="update_save_part">Сохранить</a>');
