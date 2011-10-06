@@ -57,6 +57,7 @@
 
   </div>
 
+
   <div class="inner">
     <h3>Работы</h3>
     <div id="labor_list"><%= render "labor_list" %></div>
@@ -79,6 +80,18 @@
       <%= render 'part_form' %>
     </div>
 
+  </div>
+
+  <div class="clear"></div>
+  <br>
+
+  <div class="inner">
+    <h3>Добавить существующую часть</h3>
+    <!--<a href="#" class="add_ex_part_form">Добавить существующую часть</a><br>-->
+    <label for="search_ex_part">Поиск</label>
+    <input type="text" id="search_ex_part" size="20">
+    <div id="all_part_list"><%= render "all_part_list" %></div>
+    <a href="#" id="add_ex_part">Добавить</a>
   </div>
 
 </div>

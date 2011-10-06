@@ -30,6 +30,8 @@ Repairer::Application.routes.draw do
   get "modifications" => "modifications#index"
 
   get "modifications/clear"
+  get "modifications/search_ex_part"
+  get "modifications/add_ex_part"
 
   get "modifications/add_brand"
   get "modifications/save_brand"

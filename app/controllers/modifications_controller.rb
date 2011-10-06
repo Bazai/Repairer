@@ -98,6 +98,16 @@ class ModificationsController < ApplicationController
 
   end
 
+  def search_ex_part
+    @all_parts = Part.all(:conditions => ["name like ?", "%" + params[:search] + "%"])
+  end
+
+  def add_ex_part
+    @maintenance = Maintenance.find(params[:maintenance_id])
+    @part = Part.find(params[:part_id])
+    @maintenance.parts << @part
+    get_parts()
+  end
 
   def index
     @brand = Brand.new
@@ -111,6 +121,8 @@ class ModificationsController < ApplicationController
     @labors = []
     @part = Part.new
     @parts = []
+
+    @all_parts = Part.all
 
     get_brands()
   end
