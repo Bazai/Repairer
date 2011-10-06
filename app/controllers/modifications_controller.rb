@@ -2,27 +2,27 @@ class ModificationsController < ApplicationController
   layout 'admin'
 
   def get_brands
-    @brands = Brand.all(:order => "created_at desc")
+    @brands = Brand.all(:order => "name")
   end
 
   def get_car_models
-    @car_models = CarModel.find_all_by_brand_id(@brand.id, :order => "created_at desc")
+    @car_models = CarModel.find_all_by_brand_id(@brand.id, :order => "name")
   end
 
   def get_production_years
-    @production_years = ProductionYear.find_all_by_car_model_id(@car_model.id, :order => "created_at desc")
+    @production_years = ProductionYear.find_all_by_car_model_id(@car_model.id, :order => "year")
   end
 
   def get_maintenances
-    @maintenances = Maintenance.find_all_by_production_year_id(@production_year.id, :order => "created_at desc")
+    @maintenances = Maintenance.find_all_by_production_year_id(@production_year.id, :order => "description")
   end
 
   def get_labors
-    @labors = Labor.find_all_by_maintenance_id(@maintenance.id, :order => "created_at desc")
+    @labors = Labor.find_all_by_maintenance_id(@maintenance.id, :order => "name")
   end
 
   def get_parts
-    @parts = @maintenance.parts(:order => "created_at desc")
+    @parts = @maintenance.parts(:order => "name")
   end
 
   def clear
