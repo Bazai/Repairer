@@ -1,0 +1,3 @@
+$("#car_model_list").html('<%= escape_javascript(render "list") %>');
+$("#car_model_form").html('<%= escape_javascript(render "form") %>');
+$("#car_model_form input").each(function(){$(this).val("");});

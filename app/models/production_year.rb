@@ -6,6 +6,7 @@ class ProductionYear < ActiveRecord::Base
   
   validates_presence_of :car_model, :on => :create, :message => "наличие модели автомобиля обязательно"
   validate :validate_year_uniqueness_inside_car_model
+  
   accepts_nested_attributes_for :maintenances, :allow_destroy => true, :reject_if => proc { |a| a[:price].blank? }
   
   def validate_year_uniqueness_inside_car_model

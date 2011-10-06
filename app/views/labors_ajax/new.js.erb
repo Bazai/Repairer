@@ -1,0 +1,5 @@
+$("#add_labor").text("");
+
+$("#labor_form").html('<%= escape_javascript(render "form") %>');
+$("#save_labor_block").append('\n<a href="#" id="cancel_save_labor">Отменить</a>');
+$("#labor_name").focus();
