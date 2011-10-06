@@ -1,24 +1,24 @@
 <% if @clear.include?("car_model") %>
-    $("#car_model_list").html('<%= escape_javascript(render "car_model_list") %>');
-    $("#car_model_form").html('<%= escape_javascript(render "car_model_form") %>');
+    $("#car_model_list").html('<%= escape_javascript(render "car_models_ajax/list") %>');
+    $("#car_model_form").html('<%= escape_javascript(render "car_models_ajax/form") %>');
 <% end %>
 
 <% if @clear.include?("production_year") %>
-    $("#production_year_form").html('<%= escape_javascript(render "production_year_form") %>');
-    $("#production_year_list").html('<%= escape_javascript(render "production_year_list") %>');
+    $("#production_year_form").html('<%= escape_javascript(render "production_years_ajax/form") %>');
+    $("#production_year_list").html('<%= escape_javascript(render "production_years_ajax/list") %>');
 <% end %>
 
 <% if @clear.include?("maintenance") %>
-    $("#maintenance_form").html('<%= escape_javascript(render "maintenance_form") %>');
-    $("#maintenance_list").html('<%= escape_javascript(render "maintenance_list") %>');
+    $("#maintenance_form").html('<%= escape_javascript(render "maintenances_ajax/form") %>');
+    $("#maintenance_list").html('<%= escape_javascript(render "maintenances_ajax/list") %>');
 <% end %>
 
 <% if @clear.include?("labor") %>
-    $("#labor_form").html('<%= escape_javascript(render "labor_form") %>');
-    $("#labor_list").html('<%= escape_javascript(render "labor_list") %>');
+    $("#labor_form").html('<%= escape_javascript(render "labors_ajax/form") %>');
+    $("#labor_list").html('<%= escape_javascript(render "labors_ajax/list") %>');
 <% end %>
 
 <% if @clear.include?("part") %>
-    $("#part_form").html('<%= escape_javascript(render "part_form") %>');
-    $("#part_list").html('<%= escape_javascript(render "part_list") %>');
+    $("#part_form").html('<%= escape_javascript(render "parts_ajax/form") %>');
+    $("#part_list").html('<%= escape_javascript(render "parts_ajax/list") %>');
 <% end %>

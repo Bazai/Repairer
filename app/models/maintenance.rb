@@ -1,5 +1,5 @@
 class Maintenance < ActiveRecord::Base
-  belongs_to :production_year
+  belongs_to :production_year, :dependent => :destroy
 
   has_many :labors
   has_and_belongs_to_many :parts
