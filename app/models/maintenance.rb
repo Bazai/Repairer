@@ -14,6 +14,16 @@ class Maintenance < ActiveRecord::Base
   def validate_description_uniqueness_inside_production_year
     self.errors.add(:description, "обслуживания должно быть уникально, в рамках родительского года выпуска") if self.production_year.has_maintenance?(self.description)
   end
+  
+  # Возвращает true или false, в зависимости от того, есть ли у данного обслуживания
+  # работа с названием name
+  def has_labor?(name)
+      arr = []
+      self.labors.each do |labor|
+        arr << labor.name
+      end
+      arr.include?(name)
+  end
 
   def header
     self.production_year.edit_header + ", " + self.description
