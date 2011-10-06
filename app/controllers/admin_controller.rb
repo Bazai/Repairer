@@ -46,9 +46,9 @@ class AdminController < ApplicationController
       csv = CSV.new(params[:file].tempfile, :headers => true, :col_sep => ";" )
       
       # TODO удалить нахрен когда закончишь
-      Maintenance.delete_all
-      Labor.delete_all
-      Part.delete_all
+      # Maintenance.delete_all
+      # Labor.delete_all
+      # Part.delete_all
       # TODO
       
       csv.each do |row|
@@ -109,7 +109,7 @@ class AdminController < ApplicationController
             part = Part.new(name: getted_part, description: getted_part)
             part.save! if part.valid?
           end
-          unless part.nil? || part.blank?
+          unless part.nil? || part.blank? || maintenance.parts.include?(part)
             maintenance.parts << part
           end
         end
