@@ -92,7 +92,7 @@ class MaintenancesController < ApplicationController
     end
   end
 
-  def addpart
+  def addexpart
     @part = Part.find(params[:part_id])
   end
 end

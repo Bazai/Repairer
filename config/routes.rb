@@ -2,7 +2,7 @@ Repairer::Application.routes.draw do
 
   get "estim/index"
   get "estim/showselects"
-  get "maintenances/addpart"
+  get "maintenances/addexpart"
 
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
@@ -35,23 +35,45 @@ Repairer::Application.routes.draw do
   get "modifications/index"
   get "modifications" => "modifications#index"
 
-  post "modifications/add_brand"
-  post "modifications/save_brand"
+  get "modifications/clear"
+  get "modifications/search_ex_part"
+  get "modifications/add_ex_part"
+
+  get "modifications/add_brand"
+  get "modifications/save_brand"
   get "modifications/new_brand"
   get "modifications/edit_brand"
-  delete "modifications/remove_brand"
+  get "modifications/remove_brand"
 
-  post "modifications/add_car_model"
-  post "modifications/save_car_model"
+  get "modifications/add_car_model"
+  get "modifications/save_car_model"
   get "modifications/new_car_model"
   get "modifications/edit_car_model"
-  delete "modifications/remove_car_model"
+  get "modifications/remove_car_model"
 
-  post "modifications/add_production_year"
-  post "modifications/save_production_year"
+  get "modifications/add_production_year"
+  get "modifications/save_production_year"
   get "modifications/new_production_year"
   get "modifications/edit_production_year"
-  delete "modifications/remove_production_year"
+  get "modifications/remove_production_year"
+
+  get "modifications/add_maintenance"
+  get "modifications/save_maintenance"
+  get "modifications/new_maintenance"
+  get "modifications/edit_maintenance"
+  get "modifications/remove_maintenance"
+
+  get "modifications/add_labor"
+  get "modifications/save_labor"
+  get "modifications/new_labor"
+  get "modifications/edit_labor"
+  get "modifications/remove_labor"
+
+  get "modifications/add_part"
+  get "modifications/save_part"
+  get "modifications/new_part"
+  get "modifications/edit_part"
+  get "modifications/remove_part"
 
 
 

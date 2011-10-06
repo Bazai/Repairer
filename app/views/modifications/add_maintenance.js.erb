@@ -1,0 +1,7 @@
+console.log("added");
+$("#maintenance_list").html('<%= escape_javascript(render "maintenance_list") %>');
+
+$('#maintenance_list option[value="<%= @maintenance.id %>"]').attr("selected", "selected");
+$("#add_maintenance").text("Добавить");
+$("#save_maintenance_title").html("Изменить Обслуживание");
+$("#save_maintenance_block").html('<a href="#" id="update_save_maintenance">Сохранить</a>');

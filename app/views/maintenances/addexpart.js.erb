@@ -1,7 +1,7 @@
 $("#existent_parts")
         .append('<div class="ex_parts">\
         <%= label_tag "[exparts][#{@part.id}]", "#{@part.name}" %>\
-        <a id="remove_part" href="#">удалить часть</a>\
+        <a id="remove_ex_part" href="#">удалить часть</a>\
         <%= text_field_tag "[exparts][#{@part.id}]", "#{@part.id}",\
         :id => "exparts_#{@part.id}", :type => :hidden %>\
         </div>');

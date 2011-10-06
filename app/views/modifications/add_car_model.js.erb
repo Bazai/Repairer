@@ -1,2 +1,6 @@
-$("#car_model_form").html('<%= escape_javascript(render "car_model_form") %>');
 $("#car_model_list").html('<%= escape_javascript(render "car_model_list") %>');
+
+$('#car_model_list option[value="<%= @car_model.id %>"]').attr("selected", "selected");
+$("#add_car_model").text("Добавить");
+$("#save_car_model_title").html("Изменить Модель");
+$("#save_car_model_block").html('<a href="#" id="update_save_car_model">Сохранить</a>');
