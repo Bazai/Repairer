@@ -39,4 +39,9 @@ class AdminController < ApplicationController
       end
     end
   end
+  
+  def parse_maintenance_csv
+    
+    
+  end
 end

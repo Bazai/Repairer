@@ -12,7 +12,7 @@
 
 <% @labors.each do |labor| %>
   <tr>
-    <td><%= labor.maintenance.header %></td>
+    <td><%= labor.maintenance.nil? ? 'Глюк, видимо нет родителя' : labor.maintenance.header %></td>
     <td><%= labor.name %></td>
     <td><%= labor.description %></td>
     <td><%= link_to 'Show', labor %></td>
