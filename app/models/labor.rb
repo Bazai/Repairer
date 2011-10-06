@@ -1,3 +1,3 @@
 class Labor < ActiveRecord::Base
-  belongs_to :maintenance, :dependent => :destroy
+  belongs_to :maintenance
 end

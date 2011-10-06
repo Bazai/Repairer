@@ -31,7 +31,7 @@ class MaintenancesAjaxController < ApplicationController
     @production_year = ProductionYear.find(params[:production_year_id])
     @maintenance = Maintenance.find(params[:maintenance_id])
 
-    @maintenance.delete
+    @maintenance.destroy
     get_maintenances()
   end
 

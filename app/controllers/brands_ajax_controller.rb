@@ -30,7 +30,7 @@ class BrandsAjaxController < ApplicationController
   def destroy
     @brand = Brand.find(params[:id])
 
-    @brand.delete
+    @brand.destroy
     get_brands()
   end
 

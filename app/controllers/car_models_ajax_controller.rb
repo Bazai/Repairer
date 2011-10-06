@@ -31,7 +31,7 @@ class CarModelsAjaxController < ApplicationController
     @brand = Brand.find(params[:brand_id])
     @car_model = CarModel.find(params[:car_model_id])
 
-    @car_model.delete
+    @car_model.destroy
     get_car_models()
   end
 

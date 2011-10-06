@@ -32,7 +32,7 @@ class ProductionYearsAjaxController < ApplicationController
     @car_model = CarModel.find(params[:car_model_id])
     @production_year = ProductionYear.find(params[:production_year_id])
 
-    @production_year.delete
+    @production_year.destroy
     get_production_years()
   end
 

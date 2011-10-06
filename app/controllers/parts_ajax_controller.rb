@@ -31,7 +31,7 @@ class PartsAjaxController < ApplicationController
     @maintenance = Maintenance.find(params[:maintenance_id])
     @part = Part.find(params[:part_id])
 
-    @part.delete
+    @part.destroy
     get_parts()
   end
 

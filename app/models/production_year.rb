@@ -1,6 +1,6 @@
 class ProductionYear < ActiveRecord::Base
-  belongs_to :car_model, :dependent => :destroy
-  has_many :maintenances
+  belongs_to :car_model
+  has_many :maintenances, :dependent => :destroy
   accepts_nested_attributes_for :maintenances, :allow_destroy => true, :reject_if => proc { |a| a[:price].blank? }
   
   

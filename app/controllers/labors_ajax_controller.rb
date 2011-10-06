@@ -31,7 +31,7 @@ class LaborsAjaxController < ApplicationController
     @maintenance = Maintenance.find(params[:maintenance_id])
     @labor = Labor.find(params[:labor_id])
 
-    @labor.delete
+    @labor.destroy
     get_labors()
   end
 
