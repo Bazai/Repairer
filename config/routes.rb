@@ -55,6 +55,18 @@ Repairer::Application.routes.draw do
   get "modifications/edit_maintenance"
   get "modifications/remove_maintenance"
 
+  get "modifications/add_labor"
+  get "modifications/save_labor"
+  get "modifications/new_labor"
+  get "modifications/edit_labor"
+  get "modifications/remove_labor"
+
+  get "modifications/add_part"
+  get "modifications/save_part"
+  get "modifications/new_part"
+  get "modifications/edit_part"
+  get "modifications/remove_part"
+
 
 
 

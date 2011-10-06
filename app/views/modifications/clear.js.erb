@@ -12,3 +12,13 @@
     $("#maintenance_form").html('<%= escape_javascript(render "maintenance_form") %>');
     $("#maintenance_list").html('<%= escape_javascript(render "maintenance_list") %>');
 <% end %>
+
+<% if @clear.include?("labor") %>
+    $("#labor_form").html('<%= escape_javascript(render "labor_form") %>');
+    $("#labor_list").html('<%= escape_javascript(render "labor_list") %>');
+<% end %>
+
+<% if @clear.include?("part") %>
+    $("#part_form").html('<%= escape_javascript(render "part_form") %>');
+    $("#part_list").html('<%= escape_javascript(render "part_list") %>');
+<% end %>

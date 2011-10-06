@@ -1,7 +1,4 @@
 class ModificationsController < ApplicationController
-  respond_to :js
-  before_filter :get_brands
-  #after_filter :get_brands, :only => [:add_brand, :save_brand, :remove_brand]
 
   def get_brands
     @brands = Brand.all(:order => "created_at desc")
@@ -19,61 +16,83 @@ class ModificationsController < ApplicationController
     @maintenances = Maintenance.find_all_by_production_year_id(@production_year.id, :order => "created_at desc")
   end
 
+  def get_labors
+    @labors = Labor.find_all_by_maintenance_id(@maintenance.id, :order => "created_at desc")
+  end
+
+  def get_parts
+    @parts = @maintenance.parts(:order => "created_at desc")
+  end
+
   def clear
-    all = ["car_model", "production_year", "maintenance"]
+    all = ["car_model", "production_year", "maintenance", "labor", "part"]
 
     from = params[:from]
 
     if from == "brand"
       @clear = all
 
-      @car_model = CarModel.new
-      @car_models = []
-      @production_year = ProductionYear.new
-      @production_years = []
-      @maintenance = Maintenance.new
-      @maintenances = []
-
       if !params[:edit].blank?
         @brand = Brand.find(params[:edit])
         @car_models = @brand.car_models
       end
-
     end
 
     if from == "car_model"
-      @clear = all.last(2)
-
-      @car_model = CarModel.find(params[:edit]) if !params[:edit].blank?
-      @production_year = ProductionYear.new
-      @production_years = []
-      @maintenance = Maintenance.new
-      @maintenances = []
+      @clear = all.last(4)
 
       if !params[:edit].blank?
         @car_model = CarModel.find(params[:edit])
         @production_years = @car_model.production_years
       end
-
     end
 
     if from == "production_year"
-      @clear = all.last(1)
-
-      @production_year = ProductionYear.find(params[:edit]) if !params[:edit].blank?
-      @maintenance = Maintenance.new
-      @maintenances = []
+      @clear = all.last(3)
 
       if !params[:edit].blank?
         @production_year = ProductionYear.find(params[:edit])
         @maintenances = @production_year.maintenances
       end
-
     end
 
     if from == "maintenance"
-      @clear = []
+      @clear = all.last(2)
 
+      if !params[:edit].blank?
+        @maintenance = Maintenance.find(params[:edit])
+        @labors = @maintenance.labors
+        @parts = @maintenance.parts
+      end
+    end
+
+    if from == "labor"
+      @clear = []
+    end
+
+    if from == "part"
+      @clear = []
+    end
+
+    if (@clear.include?("car_model"))
+      @car_model = CarModel.new
+      @car_models = [] if (@car_models.blank?)
+    end
+    if (@clear.include?("production_year"))
+      @production_year = ProductionYear.new
+      @production_years = [] if (@production_years.blank?)
+    end
+    if (@clear.include?("maintenance"))
+      @maintenance = Maintenance.new
+      @maintenances = [] if (@maintenances.blank?)
+    end
+    if (@clear.include?("labor"))
+      @labor = Labor.new
+      @labors = [] if (@labors.blank?)
+    end
+    if (@clear.include?("part"))
+      @part = Part.new
+      @parts = [] if (@parts.blank?)
     end
 
   end
@@ -87,6 +106,12 @@ class ModificationsController < ApplicationController
     @production_years = []
     @maintenance = Maintenance.new
     @maintenances = []
+    @labor = Labor.new
+    @labors = []
+    @part = Part.new
+    @parts = []
+
+    get_brands()
   end
 
 
@@ -189,6 +214,8 @@ class ModificationsController < ApplicationController
 
 
 
+
+
   def new_maintenance
     @maintenance = Maintenance.new
   end
@@ -218,6 +245,76 @@ class ModificationsController < ApplicationController
 
     @maintenance.delete
     get_maintenances()
+  end
+
+
+
+
+
+  def new_labor
+    @labor = Labor.new
+  end
+
+  def edit_labor
+    @labor = Labor.find(params[:labor_id])
+  end
+
+  def add_labor
+    @maintenance = Maintenance.find(params[:maintenance_id])
+    @labor = Labor.new(params[:labor])
+    @labor.maintenance = @maintenance
+
+    @labor.save!
+    get_labors()
+  end
+
+  def save_labor
+    @labor = Labor.find(params[:labor_id])
+
+    @labor.update_attributes!(params[:labor])
+  end
+
+  def remove_labor
+    @maintenance = Maintenance.find(params[:maintenance_id])
+    @labor = Labor.find(params[:labor_id])
+
+    @labor.delete
+    get_labors()
+  end
+
+
+
+
+
+  def new_part
+    @part = Part.new
+  end
+
+  def edit_part
+    @part = Part.find(params[:part_id])
+  end
+
+  def add_part
+    @maintenance = Maintenance.find(params[:maintenance_id])
+    @part = Part.new(params[:part])
+    @part.maintenances << @maintenance
+
+    @part.save!
+    get_parts()
+  end
+
+  def save_part
+    @part = Part.find(params[:part_id])
+
+    @part.update_attributes!(params[:part])
+  end
+
+  def remove_part
+    @maintenance = Maintenance.find(params[:maintenance_id])
+    @part = Part.find(params[:part_id])
+
+    @part.delete
+    get_parts()
   end
 
 end

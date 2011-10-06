@@ -106,7 +106,7 @@ jQuery ->
         $.ajax
             type: "get",
             url: "/modifications/new_production_year",
-            data: "production_year_id=" + $("#production_years option:selected").val()
+            data: "car_model_id=" + $("#car_models option:selected").val()
             success: () -> $.get("/modifications/clear", "from=production_year")
     )
 
@@ -156,7 +156,7 @@ jQuery ->
         $.ajax
             type: "get",
             url: "/modifications/new_maintenance",
-            data: "maintenance_id=" + $("#maintenances option:selected").val()
+            data: "production_year_id=" + $("#production_years option:selected").val()
             success: () -> $.get("/modifications/clear", "from=maintenance")
     )
 
@@ -164,9 +164,9 @@ jQuery ->
         $.ajax
             type: "get",
             url: "/modifications/remove_maintenance",
-            data: "&maintenance_id=" + $("#maintenances option:selected").val()\
+            data: "maintenance_id=" + $("#maintenances option:selected").val()\
                   + "&production_year_id=" + $("#production_years option:selected").val()
-            success: () -> $.get("/modifications/clear", "from=production_year")
+            success: () -> $.get("/modifications/clear", "from=maintenance")
     )
 
     $('#add_save_maintenance').live('click', () ->
@@ -191,6 +191,102 @@ jQuery ->
 
 
 
+    $('#labors').live('change', () ->
+        id = $("#labors option:selected").val()
+        $.ajax
+            type: "get",
+            url: "/modifications/edit_labor",
+            data: "labor_id=" + id,
+#            success: () -> $.get("/modifications/clear", "from=labor&edit=" + id)
+    )
+
+    $('#add_labor').live('click', () ->
+        $("#labors option:selected").removeAttr("selected")
+        $.ajax
+            type: "get",
+            url: "/modifications/new_labor",
+            data: "maintenance_id=" + $("#maintenances option:selected").val()
+#            success: () -> $.get("/modifications/clear", "from=labor")
+    )
+
+    $('#remove_labor').live('click', () ->
+        $.ajax
+            type: "get",
+            url: "/modifications/remove_labor",
+            data: "labor_id=" + $("#labors option:selected").val()\
+                  + "&maintenance_id=" + $("#maintenances option:selected").val()
+#            success: () -> $.get("/modifications/clear", "from=labor")
+    )
+
+    $('#add_save_labor').live('click', () ->
+        $.ajax
+            type: "get",
+            url: "/modifications/add_labor",
+            data: "[labor][description]=" + $("#labor_description").val()\
+                  + "&[labor][name]=" + $("#labor_name").val()\
+                  + "&maintenance_id=" + $("#maintenances option:selected").val()
+    )
+
+    $('#update_save_labor').live('click', () ->
+        $.ajax
+            type: "get",
+            url: "/modifications/save_labor",
+            data: "[labor][description]=" + $("#labor_description").val()\
+                  + "&[labor][name]=" + $("#labor_name").val()\
+                  + "&labor_id=" + $("#labors option:selected").val()
+    )
+
+
+
+
+    $('#parts').live('change', () ->
+        id = $("#parts option:selected").val()
+        $.ajax
+            type: "get",
+            url: "/modifications/edit_part",
+            data: "part_id=" + id,
+#            success: () -> $.get("/modifications/clear", "from=part&edit=" + id)
+    )
+
+    $('#add_part').live('click', () ->
+        $("#parts option:selected").removeAttr("selected")
+        $.ajax
+            type: "get",
+            url: "/modifications/new_part",
+            data: "maintenance_id=" + $("#maintenances option:selected").val()
+#            success: () -> $.get("/modifications/clear", "from=part")
+    )
+
+    $('#remove_part').live('click', () ->
+        $.ajax
+            type: "get",
+            url: "/modifications/remove_part",
+            data: "part_id=" + $("#parts option:selected").val()\
+                  + "&maintenance_id=" + $("#maintenances option:selected").val()
+#            success: () -> $.get("/modifications/clear", "from=part")
+    )
+
+    $('#add_save_part').live('click', () ->
+        $.ajax
+            type: "get",
+            url: "/modifications/add_part",
+            data: "[part][description]=" + $("#part_description").val()\
+                  + "&[part][name]=" + $("#part_name").val()\
+                  + "&maintenance_id=" + $("#maintenances option:selected").val()
+    )
+
+    $('#update_save_part').live('click', () ->
+        $.ajax
+            type: "get",
+            url: "/modifications/save_part",
+            data: "[part][description]=" + $("#part_description").val()\
+                  + "&[part][name]=" + $("#part_name").val()\
+                  + "&part_id=" + $("#parts option:selected").val()
+    )
+
+
+
+
     $("#cancel_save_brand").live('click', () ->
         $("#add_brand").text("Добавить")
         $("#cancel_save_brand").remove()
@@ -204,6 +300,21 @@ jQuery ->
     $("#cancel_save_production_year").live('click', () ->
         $("#add_production_year").text("Добавить")
         $("#cancel_save_production_year").remove()
+    )
+
+    $("#cancel_save_maintenance").live('click', () ->
+        $("#add_maintenance").text("Добавить")
+        $("#cancel_save_maintenance").remove()
+    )
+
+    $("#cancel_save_labor").live('click', () ->
+        $("#add_labor").text("Добавить")
+        $("#cancel_save_labor").remove()
+    )
+
+    $("#cancel_save_part").live('click', () ->
+        $("#add_part").text("Добавить")
+        $("#cancel_save_part").remove()
     )
 
 
