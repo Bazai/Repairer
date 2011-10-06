@@ -1,7 +1,7 @@
 class Maintenance < ActiveRecord::Base
   belongs_to :production_year
 
-  has_many :labors, , :dependent => :destroy
+  has_many :labors, :dependent => :destroy
   has_and_belongs_to_many :parts
 
   accepts_nested_attributes_for :labors, :allow_destroy => true, :reject_if => proc { |a| a[:name].blank? }
