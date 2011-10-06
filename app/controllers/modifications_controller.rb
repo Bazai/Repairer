@@ -1,4 +1,5 @@
 class ModificationsController < ApplicationController
+  layout 'admin'
 
   def get_brands
     @brands = Brand.all(:order => "created_at desc")
