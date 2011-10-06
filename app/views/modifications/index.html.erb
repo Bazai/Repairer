@@ -1,5 +1,5 @@
 # encoding: utf-8
-<h2>Добавление Брендов, Моделей, Годов Производства</h2>
+<h2>Управление модификациями</h2>
 
 <div class="wrapper">
   <div class="inner">
@@ -39,5 +39,22 @@
 
   </div>
 
+
+</div>
+<div class="clear"></div>
+<h2>Управление Обслуживаниями</h2>
+<div class="wrapper">
+
+  <div class="inner">
+    <h3>Обслуживания</h3>
+    <div id="maintenance_list"><%= render "maintenance_list" %></div>
+    <a href="#" id="add_maintenance">Добавить</a>
+    <a href="#" id="remove_maintenance">Удалить</a>
+    <br />
+    <div id="maintenance_form">
+      <%= render 'maintenance_form' %>
+    </div>
+
+  </div>
 
 </div>
