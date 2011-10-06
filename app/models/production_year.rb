@@ -2,7 +2,7 @@
 class ProductionYear < ActiveRecord::Base
   belongs_to :car_model
   
-  has_many :maintenances
+  has_many :maintenances, :dependent => :destroy
   
   validates_presence_of :car_model, :on => :create, :message => "наличие модели автомобиля обязательно"
   validate :validate_year_uniqueness_inside_car_model
