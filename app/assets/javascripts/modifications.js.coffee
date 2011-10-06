@@ -175,6 +175,7 @@ jQuery ->
             url: "/modifications/add_maintenance",
             data: "[maintenance][description]=" + $("#maintenance_description").val()\
                   + "&[maintenance][price]=" + $("#maintenance_price").val()\
+                  + "&[maintenance][mileage]=" + $("#maintenance_mileage").val()\
                   + "&production_year_id=" + $("#production_years option:selected").val()
     )
 
@@ -184,6 +185,7 @@ jQuery ->
             url: "/modifications/save_maintenance",
             data: "[maintenance][description]=" + $("#maintenance_description").val()\
                   + "&[maintenance][price]=" + $("#maintenance_price").val()\
+                  + "&[maintenance][mileage]=" + $("#maintenance_mileage").val()\
                   + "&maintenance_id=" + $("#maintenances option:selected").val()
     )
 

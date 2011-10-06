@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110930170859) do
+ActiveRecord::Schema.define(:version => 20111006053520) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20110930170859) do
     t.integer  "production_year_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "mileage"
   end
 
   add_index "maintenances", ["production_year_id"], :name => "index_maintenances_on_production_year_id"

@@ -1,6 +1,7 @@
 <h3 id="save_maintenance_title">Добавить Обслуживание</h3>
 <%= simple_form_for @maintenance do |f| %>
     <%= f.input :description, :label => "Описание", :input_html => { :size => 20 } %>
+    <%= f.input :mileage, :label => "Пробег", :input_html => { :size => 20 } %>
     <%= f.input :price, :label => "Стоимость", :input_html => { :size => 20 } %>
 <% end %>
 <div id="save_maintenance_block"><a href="#" id="add_save_maintenance">Добавить</a></div>
