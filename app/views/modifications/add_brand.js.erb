@@ -1,3 +1,7 @@
 console.log("added");
-$("#brand_form").html('<%= escape_javascript(render "brand_form") %>');
 $("#brand_list").html('<%= escape_javascript(render "brand_list") %>');
+
+$('#brand_list option[value="<%= @brand.id %>"]').attr("selected", "selected");
+$("#add_brand").text("Добавить");
+$("#save_brand_title").html("Изменить Бренд");
+$("#save_brand_block").html('<a href="#" id="update_save_brand">Сохранить</a>');
