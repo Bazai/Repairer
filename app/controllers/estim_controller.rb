@@ -13,12 +13,12 @@ class EstimController < ApplicationController
   def showselects
 
     if !params[:brand_id].blank?
-      @brand = Brand.find(params[:brand_id])
-      @car_models = @brand.car_models
+      @brand = Brand.find(params[:brand_id], :order => :name)
+      @car_models = @brand.car_models(:order => :name)
     end
 
     if !params[:car_model_id].blank?
-      @car_model = CarModel.find(params[:car_model_id])
+      @car_model = CarModel.find(params[:car_model_id], :order => :name)
       @production_years = @car_model.production_years
     end
 
