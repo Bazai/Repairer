@@ -18,7 +18,7 @@ jQuery ->
     # Удаление Бренда
     $('#remove_brand').live('click', () ->
         $.ajax
-            type: "get"
+            type: "delete"
             url: "/brands_ajax/destroy"
             data: "id=" + $("#brands option:selected").val()
             success: () -> $.get("/modifications/clear", "from=brand")
@@ -27,7 +27,7 @@ jQuery ->
     # Создание Бренда
     $('#add_save_brand').live('click', () ->
         $.ajax
-            type: "get"
+            type: "post"
             url: "/brands_ajax/create"
             data: "[brand][name]=" + $("#brand_name").val()
     )
@@ -35,7 +35,7 @@ jQuery ->
     # Изменение Бренда
     $('#update_save_brand').live('click', () ->
         $.ajax
-            type: "get"
+            type: "post"
             url: "/brands_ajax/update"
             data: "id=" + $("#brands option:selected").val() + "&[brand][name]=" + $("#brand_name").val()
     )

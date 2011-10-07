@@ -23,7 +23,7 @@ jQuery ->
     # Удаление Года
     $('#remove_production_year').live('click', () ->
         $.ajax
-            type: "get",
+            type: "delete",
             url: "/production_years_ajax/destroy",
             data: "&car_model_id=" + $("#car_models option:selected").val()\
                   + "&production_year_id=" + $("#production_years option:selected").val()
@@ -33,7 +33,7 @@ jQuery ->
     # Добавление нового Года
     $('#add_save_production_year').live('click', () ->
         $.ajax
-            type: "get",
+            type: "post",
             url: "/production_years_ajax/create",
             data: "[production_year][year]=" + $("#production_year_year").val()\
                   + "&car_model_id=" + $("#car_models option:selected").val()
@@ -42,7 +42,7 @@ jQuery ->
     # Сохранение изменений Года
     $('#update_save_production_year').live('click', () ->
         $.ajax
-            type: "get",
+            type: "post",
             url: "/production_years_ajax/update",
             data: "[production_year][year]=" + $("#production_year_year").val()\
                   + "&production_year_id=" + $("#production_years option:selected").val()

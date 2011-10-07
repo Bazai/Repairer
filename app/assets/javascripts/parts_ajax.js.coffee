@@ -18,7 +18,7 @@ jQuery ->
 
     $('#remove_part').live('click', () ->
         $.ajax
-            type: "get",
+            type: "delete",
             url: "/parts_ajax/destroy",
             data: "part_id=" + $("#parts option:selected").val()\
                   + "&maintenance_id=" + $("#maintenances option:selected").val()
@@ -26,7 +26,7 @@ jQuery ->
 
     $('#add_save_part').live('click', () ->
         $.ajax
-            type: "get",
+            type: "post",
             url: "/parts_ajax/create",
             data: "[part][description]=" + $("#part_description").val()\
                   + "&[part][name]=" + $("#part_name").val()\
@@ -35,7 +35,7 @@ jQuery ->
 
     $('#update_save_part').live('click', () ->
         $.ajax
-            type: "get",
+            type: "post",
             url: "/parts_ajax/update",
             data: "[part][description]=" + $("#part_description").val()\
                   + "&[part][name]=" + $("#part_name").val()\

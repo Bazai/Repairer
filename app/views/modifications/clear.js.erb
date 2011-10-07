@@ -1,24 +1,28 @@
+var id = -1;
+var stop = false;
+
 <% if @clear.include?("car_model") %>
-    $("#car_model_list").html('<%= escape_javascript(render "car_models_ajax/list") %>');
-    $("#car_model_form").html('<%= escape_javascript(render "car_models_ajax/form") %>');
+    var val = $("#car_models option:selected").val();
+    $("#car_model_view").html('<%= escape_javascript(render "car_models_ajax/index") %>');
+    if (val == null) stop = true;
 <% end %>
 
 <% if @clear.include?("production_year") %>
-    $("#production_year_form").html('<%= escape_javascript(render "production_years_ajax/form") %>');
-    $("#production_year_list").html('<%= escape_javascript(render "production_years_ajax/list") %>');
+    var val = $("#production_years option:selected").val()
+    if (!stop) $("#production_year_view").html('<%= escape_javascript(render "production_years_ajax/index") %>');
+    if (val == null) stop = true;
 <% end %>
 
 <% if @clear.include?("maintenance") %>
-    $("#maintenance_form").html('<%= escape_javascript(render "maintenances_ajax/form") %>');
-    $("#maintenance_list").html('<%= escape_javascript(render "maintenances_ajax/list") %>');
+    var val = $("#maintenances option:selected").val()
+    if (!stop) $("#maintenance_view").html('<%= escape_javascript(render "maintenances_ajax/index") %>');
+    if (val == null) stop = true;
 <% end %>
 
 <% if @clear.include?("labor") %>
-    $("#labor_form").html('<%= escape_javascript(render "labors_ajax/form") %>');
-    $("#labor_list").html('<%= escape_javascript(render "labors_ajax/list") %>');
+    if (!stop) $("#labor_view").html('<%= escape_javascript(render "labors_ajax/index") %>');
 <% end %>
 
 <% if @clear.include?("part") %>
-    $("#part_form").html('<%= escape_javascript(render "parts_ajax/form") %>');
-    $("#part_list").html('<%= escape_javascript(render "parts_ajax/list") %>');
+    if (!stop) $("#part_view").html('<%= escape_javascript(render "parts_ajax/index") %>');
 <% end %>

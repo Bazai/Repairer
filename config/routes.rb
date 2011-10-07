@@ -1,3 +1,5 @@
+require 'route_helpers'
+
 Repairer::Application.routes.draw do
 
   get "estim/index"
@@ -36,14 +38,17 @@ Repairer::Application.routes.draw do
   get "modifications" => "modifications#index"
 
   get "modifications/clear"
-  get "modifications/search_ex_part"
-  get "modifications/add_ex_part"
+  get "existence_parts/search"
+  post "existence_parts/add"
 
-  ['create', 'update', 'new', 'edit', 'destroy'].each { |r|
-    ['brand', 'car_model', 'production_year', 'maintenance', 'labor', 'part'].each { |c|
-      get "#{c}s_ajax/#{r}"
-    }
-  }
+  ajax_resources :brands_ajax, :car_models_ajax, :production_years_ajax,\
+                 :maintenances_ajax, :labors_ajax, :parts_ajax,
+
+  #['create', 'update', 'new', 'edit', 'destroy'].each { |r|
+  #  ['brand', 'car_model', 'production_year', 'maintenance', 'labor', 'part'].each { |c|
+  #    get "#{c}s_ajax/#{r}"
+  #  }
+  #}
 
 
   # The priority is based upon order of creation:

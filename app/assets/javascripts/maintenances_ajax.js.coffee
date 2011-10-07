@@ -20,7 +20,7 @@ jQuery ->
 
     $('#remove_maintenance').live('click', () ->
         $.ajax
-            type: "get",
+            type: "delete",
             url: "/maintenances_ajax/destroy",
             data: "maintenance_id=" + $("#maintenances option:selected").val()\
                   + "&production_year_id=" + $("#production_years option:selected").val()
@@ -29,7 +29,7 @@ jQuery ->
 
     $('#add_save_maintenance').live('click', () ->
         $.ajax
-            type: "get",
+            type: "post",
             url: "/maintenances_ajax/create",
             data: "[maintenance][description]=" + $("#maintenance_description").val()\
                   + "&[maintenance][price]=" + $("#maintenance_price").val()\
@@ -39,7 +39,7 @@ jQuery ->
 
     $('#update_save_maintenance').live('click', () ->
         $.ajax
-            type: "get",
+            type: "post",
             url: "/maintenances_ajax/update",
             data: "[maintenance][description]=" + $("#maintenance_description").val()\
                   + "&[maintenance][price]=" + $("#maintenance_price").val()\

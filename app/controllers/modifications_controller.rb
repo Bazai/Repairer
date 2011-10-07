@@ -1,6 +1,23 @@
 class ModificationsController < ApplicationController
   layout 'admin'
 
+  def index
+    @brand = Brand.new
+    @brands = Brand.all(:order => "name")
+    @car_model = CarModel.new
+    @car_models = []
+    @production_year = ProductionYear.new
+    @production_years = []
+    @maintenance = Maintenance.new
+    @maintenances = []
+    @labor = Labor.new
+    @labors = []
+    @part = Part.new
+    @parts = []
+
+    @all_parts = Part.all
+  end
+
   def clear
     all = ["car_model", "production_year", "maintenance", "labor", "part"]
 
@@ -72,36 +89,5 @@ class ModificationsController < ApplicationController
       @parts = [] if (@parts.blank?)
     end
 
-  end
-
-
-  def search_ex_part
-    @all_parts = Part.all(:conditions => ["name like ?", "%" + params[:search] + "%"])
-  end
-
-  def add_ex_part
-    @maintenance = Maintenance.find(params[:maintenance_id])
-    @part = Part.find(params[:part_id])
-    @maintenance.parts << @part
-    get_parts()
-  end
-
-
-
-  def index
-    @brand = Brand.new
-    @brands = Brand.all(:order => "name")
-    @car_model = CarModel.new
-    @car_models = []
-    @production_year = ProductionYear.new
-    @production_years = []
-    @maintenance = Maintenance.new
-    @maintenances = []
-    @labor = Labor.new
-    @labors = []
-    @part = Part.new
-    @parts = []
-
-    @all_parts = Part.all
   end
 end

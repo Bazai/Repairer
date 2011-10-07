@@ -23,7 +23,7 @@ jQuery ->
     # Удаление Модели
     $('#remove_car_model').live('click', () ->
         $.ajax
-            type: "get",
+            type: "delete",
             url: "/car_models_ajax/destroy",
             data: "brand_id=" + $("#brands option:selected").val()\
                   + "&car_model_id=" + $("#car_models option:selected").val(),
@@ -33,7 +33,7 @@ jQuery ->
     # Добавление новой Модели
     $('#add_save_car_model').live('click', () ->
         $.ajax
-            type: "get",
+            type: "post",
             url: "/car_models_ajax/create",
             data: "[car_model][name]=" + $("#car_model_name").val()\
                   + "&[car_model][description]=" + $("#car_model_description").val()\
@@ -43,7 +43,7 @@ jQuery ->
     # Сохранение изменений Модели
     $('#update_save_car_model').live('click', () ->
         $.ajax
-            type: "get",
+            type: "post",
             url: "/car_models_ajax/update",
             data: "[car_model][name]=" + $("#car_model_name").val()\
                   + "&[car_model][description]=" + $("#car_model_description").val()\
