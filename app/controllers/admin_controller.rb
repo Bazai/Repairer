@@ -1,3 +1,4 @@
+# encoding: utf-8
 class AdminController < ApplicationController
   # require 'fastercsv'
   require 'csv'
@@ -38,5 +39,103 @@ class AdminController < ApplicationController
         end
       end
     end
+  end
+  
+  def parse_maintenance_csv
+    if !params[:file].nil?
+      csv = CSV.new(params[:file].tempfile, :headers => true, :col_sep => ";" )
+      
+      # TODO удалить нахрен когда закончишь
+      # Maintenance.delete_all
+      # Labor.delete_all
+      # Part.delete_all
+      # TODO
+      
+      csv.each do |row|
+        debug_row(row)
+        
+        brand = Brand.find_by_name(row["brand"].to_s)
+        if brand.nil? || brand.blank?
+          puts "Неизвестный брэнд #{row["brand"]}, сначала создайте такой брэнд. Перехожу к следующей строке."
+          next
+        end
+        
+        car_model = CarModel.where("name like ? AND brand_id = ?", row["model"].to_s, brand)
+        if car_model.nil? || car_model.blank?
+          puts "Неизвестная модель #{row["model"]}, сначала создайте такую модель. Перехожу к следующей строке."
+          next
+        end
+        
+        production_year = ProductionYear.find_by_year_and_car_model_id(row["year"].to_s, car_model)
+        if production_year.nil? || production_year.blank?
+          puts "Неизвестный год выпуска #{row["model"]} - #{row["year"]}, сначала создайте такой год. Перехожу к следующей строке."
+          next
+        end
+        
+        maintenance = Maintenance.where("description like ? AND production_year_id = ?",row["maintenance"].to_s, production_year).first
+        if maintenance.nil? || maintenance.blank?
+          maintenance = Maintenance.new(description: row["maintenance"], mileage: row["maintenance"].to_i, production_year: production_year)
+          if maintenance.valid?
+            puts "Обслуживание проходит валидацию"
+            maintenance.save!
+            maintenance.inspect
+          else
+            puts "Обслуживание не вышло лицом, есть уже такое, скорее всего"
+            # puts maintenance.errors.inspect
+          end
+        else
+          puts "Обслуживание успешно нашлось в БД. Радость!"
+        end
+        
+        labor = Labor.where("name like ? AND maintenance_id = ?",row["labor"].to_s, maintenance).first
+        if labor.nil? || labor.blank?
+          labor = Labor.new(name: row["labor"], description: row["labor"].to_s, maintenance: maintenance)
+          if labor.valid?
+            puts "Работа проходит валидацию"
+            labor.save!
+            labor.inspect
+          else
+            puts "Работа не волк, но в базу ее не добавить. Есть уже такая, скорее всего"
+            # puts maintenance.errors.inspect
+          end
+        else
+          puts "Работа успешно нашлась в БД. Радость!"
+        end
+        
+        if has_parts?(row)
+          getted_part = get_parts(row)
+          part = Part.find_by_name(getted_part)
+          if part.nil? || part.blank?
+            part = Part.new(name: getted_part, description: getted_part)
+            part.save! if part.valid?
+          end
+          unless part.nil? || part.blank? || maintenance.parts.include?(part)
+            maintenance.parts << part
+          end
+        end
+        
+        
+        
+        # puts console.log "Brand: #{row["brand"]}, Model: #{row["model"]}" 
+      end
+    end
+  end
+  
+  def debug_row(row)
+    puts "Brand: #{row["brand"]}, Model: #{row["model"]}, Year: #{row["year"]}, " \
+         + "Maintenance: #{row["maintenance"]}, Labor: #{row["labor"]}"
+    if has_parts?(row)
+      part = get_parts(row)
+      puts "Parts detected: #{part}" 
+    end
+    puts "End\n\n"
+  end
+  
+  def has_parts?(row)
+    row["labor"].include? "Replace"
+  end
+  
+  def get_parts(row)
+    row["labor"].gsub(/Replace\s/, '')
   end
 end

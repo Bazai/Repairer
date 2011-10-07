@@ -2,7 +2,7 @@ Repairer::Application.routes.draw do
 
   get "estim/index"
   get "estim/showselects"
-  get "maintenances/addpart"
+  get "maintenances/addexpart"
 
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
@@ -19,42 +19,33 @@ Repairer::Application.routes.draw do
   resources :brands, :car_models, :production_years, :maintenances, :parts, :labors
   get "estimator/index"
   post "estimator/index"
+  get "estimator/showselects"
   get "estimator" => "estimator#index"
+  get "showselects" => "estimator#showselects"
   
   get "admin/index"
   get "admin" => "admin#index"
   
   get "admin/parse_csv"
   post "admin/parse_csv"
+  get "admin/parse_maintenance_csv"
+  post "admin/parse_maintenance_csv"
   # post "estimator" => "estimator#index"
   root :to => "estimator#index"
-
-
 
 
   get "modifications/index"
   get "modifications" => "modifications#index"
 
-  post "modifications/add_brand"
-  post "modifications/save_brand"
-  get "modifications/new_brand"
-  get "modifications/edit_brand"
-  delete "modifications/remove_brand"
+  get "modifications/clear"
+  get "modifications/search_ex_part"
+  get "modifications/add_ex_part"
 
-  post "modifications/add_car_model"
-  post "modifications/save_car_model"
-  get "modifications/new_car_model"
-  get "modifications/edit_car_model"
-  delete "modifications/remove_car_model"
-
-  post "modifications/add_production_year"
-  post "modifications/save_production_year"
-  get "modifications/new_production_year"
-  get "modifications/edit_production_year"
-  delete "modifications/remove_production_year"
-
-
-
+  ['create', 'update', 'new', 'edit', 'destroy'].each { |r|
+    ['brand', 'car_model', 'production_year', 'maintenance', 'labor', 'part'].each { |c|
+      get "#{c}s_ajax/#{r}"
+    }
+  }
 
 
   # The priority is based upon order of creation:

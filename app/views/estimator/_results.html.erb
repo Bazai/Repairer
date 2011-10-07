@@ -1,0 +1,10 @@
+<div class="maintenances">
+    <h3>Выберите возможное обслуживание под ваш пробег:</h3>
+    <ul>
+    <% if !@production_year.all_maintenances.nil? %>
+        <% @production_year.all_maintenances.each do |maintenance| %>
+            <li><%= maintenance.description %> - <%= maintenance.labors.count%> Работ, <%= maintenance.parts.count %> Запчастей</li>
+        <% end %>
+    <% end %>
+    </ul>
+</div>

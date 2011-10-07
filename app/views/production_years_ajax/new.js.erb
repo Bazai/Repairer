@@ -1,0 +1,4 @@
+$("#add_production_year").text("");
+$("#production_year_form").html('<%= escape_javascript(render "form") %>');
+$("#save_production_year_block").append('\n<a href="#" id="cancel_save_production_year">Отменить</a>');
+$("#production_year_year").focus();

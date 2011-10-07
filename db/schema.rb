@@ -11,15 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111005180840) do
-
-  create_table "authentications", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "provider"
-    t.string   "uid"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(:version => 20111006053520) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -62,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20111005180840) do
     t.integer  "production_year_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "mileage"
   end
 
   add_index "maintenances", ["production_year_id"], :name => "index_maintenances_on_production_year_id"
