@@ -10,6 +10,7 @@ gem 'sorcery'
 gem 'simple_form'
 gem 'cocoon'
 gem 'cancan'
+gem 'rack', '1.3.3'
 
 gem 'thin'
 gem 'heroku'
