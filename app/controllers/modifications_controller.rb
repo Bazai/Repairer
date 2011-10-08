@@ -11,7 +11,7 @@ class ModificationsController < ApplicationController
 
       if !params[:edit].blank?
         @brand = Brand.find(params[:edit])
-        @car_models = @brand.car_models
+        @car_models = @brand.car_models.ordered
       end
     end
 
