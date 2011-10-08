@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20111006053520) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "logo"
   end
 
   create_table "car_models", :force => true do |t|
