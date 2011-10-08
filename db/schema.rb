@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20111003121535) do
+=======
+ActiveRecord::Schema.define(:version => 20111006053520) do
+>>>>>>> multiform
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -53,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20111003121535) do
     t.integer  "maintenance_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "mileage"
   end
 
   create_table "maintenances_parts", :id => false, :force => true do |t|

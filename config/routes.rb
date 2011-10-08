@@ -2,6 +2,7 @@ Repairer::Application.routes.draw do
 
   get "estim/index"
   get "estim/showselects"
+  get "maintenances/addexpart"
 
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
@@ -27,6 +28,21 @@ Repairer::Application.routes.draw do
   post "admin/parse_csv"
   # post "estimator" => "estimator#index"
   root :to => "estimator#index"
+
+
+  get "modifications/index"
+  get "modifications" => "modifications#index"
+
+  get "modifications/clear"
+  get "modifications/search_ex_part"
+  get "modifications/add_ex_part"
+
+  ['create', 'update', 'new', 'edit', 'destroy'].each { |r|
+    ['brand', 'car_model', 'production_year', 'maintenance', 'labor', 'part'].each { |c|
+      get "#{c}s_ajax/#{r}"
+    }
+  }
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

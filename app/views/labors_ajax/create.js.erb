@@ -1,0 +1,7 @@
+console.log("added");
+$("#labor_list").html('<%= escape_javascript(render "list") %>');
+
+$('#labor_list option[value="<%= @labor.id %>"]').attr("selected", "selected");
+$("#add_labor").text("Добавить");
+$("#save_labor_title").html("Изменить Работу");
+$("#save_labor_block").html('<a href="#" id="update_save_labor">Сохранить</a>');

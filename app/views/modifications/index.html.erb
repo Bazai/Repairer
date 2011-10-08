@@ -1,0 +1,97 @@
+# encoding: utf-8
+<h2>Управление модификациями</h2>
+
+<div class="wrapper">
+  <div class="inner">
+
+    <h3>Бренды</h3>
+    <div id="brand_list"><%= render "brands_ajax/list" %></div>
+    <a href="#" id="add_brand">Добавить</a>
+    <a href="#" id="remove_brand">Удалить</a>
+    <br />
+    <div id="brand_form">
+      <%= render 'brands_ajax/form' %>
+    </div>
+
+  </div>
+
+  <div class="inner">
+    <h3>Модели</h3>
+    <div id="car_model_list"><%= render "car_models_ajax/list" %></div>
+    <a href="#" id="add_car_model">Добавить</a>
+    <a href="#" id="remove_car_model">Удалить</a>
+    <br />
+    <div id="car_model_form">
+      <%= render 'car_models_ajax/form' %>
+    </div>
+
+  </div>
+
+  <div class="inner">
+    <h3>Годы производства</h3>
+    <div id="production_year_list"><%= render "production_years_ajax/list" %></div>
+    <a href="#" id="add_production_year">Добавить</a>
+    <a href="#" id="remove_production_year">Удалить</a>
+    <br />
+    <div id="production_year_form">
+      <%= render 'production_years_ajax/form' %>
+    </div>
+
+  </div>
+
+
+</div>
+<div class="clear"></div>
+<h2>Управление Обслуживаниями</h2>
+<div class="wrapper">
+
+  <div class="inner">
+    <h3>Обслуживания</h3>
+    <div id="maintenance_list"><%= render "maintenances_ajax/list" %></div>
+    <a href="#" id="add_maintenance">Добавить</a>
+    <a href="#" id="remove_maintenance">Удалить</a>
+    <br />
+    <div id="maintenance_form">
+      <%= render 'maintenances_ajax/form' %>
+    </div>
+
+  </div>
+
+
+  <div class="inner">
+    <h3>Работы</h3>
+    <div id="labor_list"><%= render "labors_ajax/list" %></div>
+    <a href="#" id="add_labor">Добавить</a>
+    <a href="#" id="remove_labor">Удалить</a>
+    <br />
+    <div id="labor_form">
+      <%= render 'labors_ajax/form' %>
+    </div>
+
+  </div>
+
+  <div class="inner">
+    <h3>Части</h3>
+    <div id="part_list"><%= render "parts_ajax/list" %></div>
+    <a href="#" id="add_part">Добавить</a>
+    <a href="#" id="remove_part">Удалить</a>
+    <br />
+    <div id="part_form">
+      <%= render 'parts_ajax/form' %>
+    </div>
+
+  </div>
+
+  <div class="clear"></div>
+  <br>
+
+  <div class="inner">
+    <h3>Добавить существующую часть</h3>
+    <!--<a href="#" class="add_ex_part_form">Добавить существующую часть</a><br>-->
+    <label for="search_ex_part">Поиск</label>
+    <input type="text" id="search_ex_part" size="20">
+    <div id="all_part_list"><%= render "all_part_list" %></div>
+    <a href="#" id="add_ex_part">Добавить</a>
+  </div>
+
+</div>

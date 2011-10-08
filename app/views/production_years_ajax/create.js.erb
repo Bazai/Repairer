@@ -1,0 +1,6 @@
+$("#production_year_list").html('<%= escape_javascript(render "list") %>');
+
+$('#production_year_list option[value="<%= @production_year.id %>"]').attr("selected", "selected");
+$("#add_production_year").text("Добавить");
+$("#save_production_year_title").html("Изменить Год");
+$("#save_production_year_block").html('<a href="#" id="update_save_production_year">Сохранить</a>');
