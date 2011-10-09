@@ -26,6 +26,14 @@ class ProductionYear < ActiveRecord::Base
       end
       arr.include?(description)
   end
+  
+  def all_maintenances
+    unless self.maintenances.nil? || self.maintenances.blank?
+      self.maintenances
+    else
+      nil
+    end
+  end
 end
 # == Schema Information
 #
