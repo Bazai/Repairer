@@ -1,5 +1,5 @@
 # encoding: utf-8
-
+<div id="estimator-container">
 <div id="estimator-form">
 <div class="brand-logo">Brand logo</div>
 <%#= params.inspect %>
@@ -13,11 +13,13 @@
     <li><%= collection_select(*@brands_select_params) %></li>
     <li><%= collection_select(*@car_models_select_params) %></li>
     <li><%= collection_select(*@production_years_select_params) %></li>
-    <li><input id="input-mantance" type="text" /></li>
-    <li><%= submit_tag "Отправить", :id => "submit", :name => "submit" %></li>
+    <li><input id="input-mantance" type="text" value="--вид сервиса--" /></li>
+    <li><%= submit_tag "Рассчитать", :id => "submit", :name => "submit" %></li>
     </ol>
 
 <% end -%>
+</div>
+</div>
 <% if !@issues.nil? %>
     <ul>
     <% if !@issues.blank? %>
@@ -28,10 +30,7 @@
     <% end %>
     </ul>
 <% end %>
-</div>
 
-<div id="slider">
-<%= image_tag("welcome_screen2.jpg", :alt => "rss feed") %>
-</div>
+
 
 

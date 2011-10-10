@@ -10,50 +10,50 @@
 </head>
 
 <body>
+
+
+
  <div><% flash.each do |name, msg| %>
                             <%= content_tag :div, msg, :id => "flash_#{name}"%>
                  <% end %></div>
-<div id="wrap">
-
-   <div id="header" class="group">
-                <h1 id="logo">Avtology</h1>
-                
-                <div id="login-block">
-               
                  
-                 <% if current_user %>
-                                Зашли как: <%= current_user.email %>
-                                <%= link_to "Выйти", logout_path %>
-                                <% if can? :index, :admin %>
-                                    <%= link_to "Админка", admin_path,  %>
-                                <% end %>
-                            <% else %>
-                                <%= link_to "Зарегистрироваться", register_path, :class => "regform" %> или
-                                <%= link_to "Войти", login_path, :class => "loginform" %>
+
+<header id="header" class="">
+  <div class="wrap header-inner group" >
+   <h1 class="logo"><a  href="#">AVTOLOGY</a></h1>
+   <div id="top-registr">
+   <% if current_user %>
+        Зашли как: <%= current_user.email %>
+        <%= link_to "Выйти", logout_path %>
+        <% if can? :index, :admin %>
+        <%= link_to "Админка", admin_path,  %>
+        <% end %>
+        <% else %>
+          <%= link_to "Зарегистрироваться", register_path, :class => "but-registr" %>
+          или
+                                
+         <%= link_to "Войти", login_path, :class => "but-enter" %>
                             <% end %>
-                        </div>
-                        
-
-               <div id="nav" class="group">
-                <ol id="nav-block" >
-                        <li><a class="example8" href="">Главная</a></li>
-                        <li><a href="">Калькулятор</a></li>
-                        <li><a href="">Контакты</a></li>
-                </ol>
-
-                </div>
-               
-               
-                </div>
-                
+   </div>
+   <nav>
+   <ol id="top-menu" >
+   	<li><%= link_to "Калькулятор", estimator_path, :class => "but-enter" %></li>
+   	<li><a href="#">Советы</a></li>
+   	<li><a href="#">Сервисы</a></li>
+   </ol>
+   </nav>
+  </div>
+</header>                 
+                 
+             
  
 
-     <div class="main-container">
+     <div id="main-container" class="wrap">
         <%= yield %>
      </div>  
 
-</div>      
-    <div id="inline_example1">HHHssiiiidddpppaa</div>
+   
+    <div id="inline_example1"></div>
     <div id="footer">Copyright</div>
 </body>
 </html>

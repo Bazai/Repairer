@@ -95,38 +95,57 @@ input, select {
     vertical-align:middle;
 }
 
-/*---layout----*/
 
-#wrap{width:960px; margin:20px auto;  }
-#header{position:relative;}
+
+body {font-family:Helvetica; font-size:12px;}
+ol li{list-style:none;}
+
+/*---layout----*/
+.wrap{width:960px; margin:0 auto; padding:0 10px; position:relative; }
+#header {background:image-url('header-bg.png');   }
 #footer{border-top:1px solid #ccc;}
+
+
+/*---- header ----*/
+.header-inner {padding:30px 0; }
+#header ol {list-style:none; float:right; margin:40px 0 80px;}
+/*---- top-navigation ----*/
+#header nav ol li{float:left; margin-left:20px; }
+#header nav ol li a{display:block; padding:10px; border:1px solid #E6E6E6; background:#ccc; -moz-border-radius:6px; text-decoration:none; font-size:16px; color:#666; text-shadow:#fff -1px 1px 1px; }
+/*--- logo ---*/
+.logo {width:229px; float:left; }
+.logo a {background:image-url('logo.png'); height:70px; display:block; text-indent:-9999em;}
+
+
+/*---- registraton ----*/
+#top-registr {position:absolute; top:20px; right:0;}
+#top-registr a{padding:7px; color:#fff; text-decoration:none; background: #D1C941; border:1px solid #E6E6E6;-moz-border-radius:8px;}
+
+
+
+
 /*---Messages---*/
 #flash_notice {text-align:center; background:#bac5dc; padding:10px 0;}
 .close{float:right; cursor:pointer; text-decoration:underline;}
-/*---logo---*/
 
-#logo {font-family:Arial; font-size:44px; float:left;  }
 
-/*---login-block---*/
-#login-block{position:absolute; right:0; top:0;}
+/*---- estimator ----*/
+#estimator-container,#regform {background:#eee; margin:-80px 0 0 0; border:1px solid #ccc;
+ background: -moz-linear-gradient(0% 25% 270deg, #eeeeee, #d9d9d9 );  -moz-border-radius:10px;}
+ #estimator-form{margin:10px 0; padding:10px 10px 10px 10px;}
+ 
+#estimator-form ol li{list-style:none; float:left; margin:0 0 10px 0;}
+#estimator-form .brand-logo{width:120px; height:75px; float:left;}
 
+#input-mantance {width:690px;  font-size:18px; padding:6px;}
+#estimator-form #submit {cursor:pointer; padding:6px; font-size:14px; background: #D1C941; border:1px solid #ccc; -moz-border-radius:6px; margin-left:10px; }
 
 /*-----------*/
 /*---forms---*/
 /*-----------*/
 
 
-/*---regform---*/
-#regform {float:left;}
-.field  {clear:both; text-align:right; line-height:25px;}
-#regform label  {float:left; padding-right:10px;}
 
-/*--- nav --- */
-#nav {float:right; margin:25px 0 0 0;}
-
-#nav-block {list-style:none;}
-
-#nav-block li {float:left; margin:0 0px 0 10px; }
 
 
 /*---misc ---*/
