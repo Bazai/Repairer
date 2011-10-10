@@ -19,7 +19,7 @@ class EstimatorController < ApplicationController
 
     if !params[:car_model_id].blank?
       @car_model = CarModel.find(params[:car_model_id], :order => :name)
-      @production_years = @car_model.production_years
+      @production_years = @car_model.production_years.ordered
     end
 
     if !params[:production_year_id].blank?

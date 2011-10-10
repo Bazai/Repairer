@@ -9,6 +9,8 @@ class ProductionYear < ActiveRecord::Base
   
   accepts_nested_attributes_for :maintenances, :allow_destroy => true, :reject_if => proc { |a| a[:price].blank? }
   
+  scope :ordered, :order => "year DESC"
+  
   def validate_year_uniqueness_inside_car_model
     self.errors.add(:year, "должен быть уникален, в рамках родительской модели автомобиля") if self.car_model.has_production_year?(self.year)
   end
