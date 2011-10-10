@@ -3,6 +3,7 @@ class Labor < ActiveRecord::Base
   belongs_to :maintenance
   
   validate :validate_name_uniqueness_inside_maintenance
+  validates_presence_of :name, :message => "Название не может быть пустым"
 
   def validate_name_uniqueness_inside_maintenance
     self.errors.add(:name, "работы должно быть уникально, в рамках родительского обслуживания") if self.maintenance.has_labor?(self.name)

@@ -9,6 +9,7 @@ class Maintenance < ActiveRecord::Base
   accepts_nested_attributes_for :parts, :allow_destroy => true, :reject_if => proc { |a| a[:name].blank? }
   
   validate :validate_description_uniqueness_inside_production_year
+  validates_presence_of :description, :message => "Описание не может быть пустым"
 
 
   def validate_description_uniqueness_inside_production_year

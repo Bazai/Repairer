@@ -1,3 +1,4 @@
+# encoding: utf-8
 class BrandsAjaxController < ApplicationController
 
   def get_brands
@@ -16,7 +17,11 @@ class BrandsAjaxController < ApplicationController
   def create
     @brand = Brand.new(params[:brand])
 
-    @brand.save!
+    if @brand.save
+      flash[:notice] = 'Brand was successfully created.'
+    #else
+    #  flash[:notice] = @brand.errors
+    end
     get_brands()
   end
 

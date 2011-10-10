@@ -1,6 +1,24 @@
-$("#brand_list").html('<%= escape_javascript(render "list") %>');
+<% if @brand.errors.any? %>
+    // Create errors
+    var errors = $('<div class="flash error"></div>');
+    <% @brand.errors.each do |attr,msg| %>
+      errors.append('<%= escape_javascript("#{attr} #{msg}") %>');
+    <% end %>
 
-$('#brand_list option[value="<%= @brand.id %>"]').attr("selected", "selected");
-$("#add_brand").text("Добавить");
-$("#save_brand_title").html("Изменить Бренд");
-$("#save_brand_block").html('<a href="#" id="update_save_brand">Сохранить</a>');
+    // Display errors
+    $("#flash_notice").html(errors);
+
+<% else %>
+    $("#brand_list").html('<%= escape_javascript(render "list") %>');
+
+    $('#brand_list option[value="<%= @brand.id %>"]').attr("selected", "selected");
+    $("#add_brand").text("Добавить");
+    $("#save_brand_title").html("Изменить Бренд");
+    $("#save_brand_block").html('<a href="#" id="update_save_brand">Сохранить</a>');
+
+    // Display success (clearing any errors)
+    $("#flash_notice").html('<div class="flash notice"><%=escape_javascript(flash.discard(:notice)) %></div>');
+<% end %>
+
+
+

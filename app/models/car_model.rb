@@ -4,6 +4,7 @@ class CarModel < ActiveRecord::Base
   belongs_to :brand
   
   validates_presence_of :brand, :on => :create, :message => "наличие брэнда обязательно"
+  validates_presence_of :name, :message => "Название не может быть пустым"
   validate :validate_name_uniqueness_inside_brand
   
   accepts_nested_attributes_for :production_years, :allow_destroy => true, :reject_if => proc { |a| a[:year].blank? }

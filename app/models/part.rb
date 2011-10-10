@@ -1,7 +1,9 @@
+# encoding: utf-8
 class Part < ActiveRecord::Base
   has_and_belongs_to_many :maintenances
   
   validates_uniqueness_of :name
+  validates_presence_of :name, :message => "Название не может быть пустым"
 end
 # == Schema Information
 #

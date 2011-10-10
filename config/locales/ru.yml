@@ -1,0 +1,16 @@
+# encoding: utf-8
+
+ru:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "Неверный формат"
+        blank: "не может быть пустым"
+      models:
+        brand:
+          attributes:
+            name: "Название"
+    models:
+      attributes:
+        brand:
+          name: "Название"
