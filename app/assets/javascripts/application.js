@@ -14,8 +14,8 @@
 
 $(function() {
 /*---colorbox login and reg---*/
-$(".regform").colorbox({href: "/register #regform", opacity: 0.1, top: 0 });
-$(".loginform").colorbox({href: "/login #loginform", opacity: 0.1, top: 0 });   
+$(".regform").colorbox({href: "/register #new_user", opacity: 0.1, top: 0 });
+$(".loginform").colorbox({href: "/login #new_user", opacity: 0.1, top: 0 });   
      
 /*---top msg---*/    
 $('#flash_notice')
@@ -25,7 +25,7 @@ $('#flash_notice').toggle('slow');
 });
     
     
-    $("").togle 
+   
      
      
     /*$('#brand').live('change', function(){
@@ -52,7 +52,7 @@ $('#flash_notice').toggle('slow');
             data: "production_year_id=" + $("#production_year").val() + "&car_model_id=" + $("#car_model").val() + "&brand_id=" + $("#brand").val()
         });
 <<<<<<< HEAD
-    });*/
+    });
 });
 
 
@@ -81,6 +81,6 @@ $('#flash_notice').toggle('slow');
 //            url: "/modifications/remove_brand",
 //            data: "brand_id=" + $("#brands option:selected").val
 //        });
-//    });
+//    });*/
 });
->>>>>>> multiform
+//>>>>>>> multiform
