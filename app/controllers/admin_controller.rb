@@ -43,6 +43,7 @@ class AdminController < ApplicationController
   
   def parse_maintenance_csv
     if !params[:file].nil?
+      @error_array = []
       csv = CSV.new(params[:file].tempfile, :headers => true, :col_sep => ";" )
       
       # TODO удалить нахрен когда закончишь
@@ -50,29 +51,34 @@ class AdminController < ApplicationController
       # Labor.delete_all
       # Part.delete_all
       # TODO
+      row_number = 0
       
       csv.each do |row|
         debug_row(row)
         
-        brand = Brand.find_by_name(row["brand"].to_s)
+        row_number = row_number + 1
+        brand = Brand.find_by_name(row["brand"].strip.to_s)
         if brand.nil? || brand.blank?
           puts "Неизвестный брэнд #{row["brand"]}, сначала создайте такой брэнд. Перехожу к следующей строке."
+          @error_array << "Неизвестный брэнд #{row["brand"]}, сначала создайте такой брэнд. Строка #{row_number}."
           next
         end
         
-        car_model = CarModel.where("name like ? AND brand_id = ?", row["model"].to_s, brand)
+        car_model = CarModel.where("name like ? AND brand_id = ?", row["model"].strip.to_s, brand)
         if car_model.nil? || car_model.blank?
           puts "Неизвестная модель #{row["model"]}, сначала создайте такую модель. Перехожу к следующей строке."
+          @error_array << "Неизвестная модель #{row["model"]}, сначала создайте такую модель. Строка #{row_number}."
           next
         end
         
-        production_year = ProductionYear.find_by_year_and_car_model_id(row["year"].to_s, car_model)
+        production_year = ProductionYear.find_by_year_and_car_model_id(row["year"].strip.to_s, car_model)
         if production_year.nil? || production_year.blank?
-          puts "Неизвестный год выпуска #{row["model"]} - #{row["year"]}, сначала создайте такой год. Перехожу к следующей строке."
+          puts "Неизвестный год выпуска #{row["model"]} - #{row["year"]}, сначала создайте такой год выпуска. Перехожу к следующей строке."
+          @error_array << "Неизвестный год выпуска #{row["model"]} - #{row["year"]}, сначала создайте такой год выпуска. Строка #{row_number}."
           next
         end
         
-        maintenance = Maintenance.where("description like ? AND production_year_id = ?",row["maintenance"].to_s, production_year).first
+        maintenance = Maintenance.where("description like ? AND production_year_id = ?",row["maintenance"].strip.to_s, production_year).first
         if maintenance.nil? || maintenance.blank?
           maintenance = Maintenance.new(description: row["maintenance"], mileage: row["maintenance"].to_i, production_year: production_year)
           if maintenance.valid?
@@ -87,7 +93,7 @@ class AdminController < ApplicationController
           puts "Обслуживание успешно нашлось в БД. Радость!"
         end
         
-        labor = Labor.where("name like ? AND maintenance_id = ?",row["labor"].to_s, maintenance).first
+        labor = Labor.where("name like ? AND maintenance_id = ?",row["labor"].strip.to_s, maintenance).first
         if labor.nil? || labor.blank?
           labor = Labor.new(name: row["labor"], description: row["labor"].to_s, maintenance: maintenance)
           if labor.valid?
@@ -114,8 +120,6 @@ class AdminController < ApplicationController
           end
         end
         
-        
-        
         # puts console.log "Brand: #{row["brand"]}, Model: #{row["model"]}" 
       end
     end
@@ -138,4 +142,5 @@ class AdminController < ApplicationController
   def get_parts(row)
     row["labor"].gsub(/Replace\s/, '')
   end
+  
 end

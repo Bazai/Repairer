@@ -1,3 +1,14 @@
+<% if !@error_array.blank? %>
+    <h3>Список ошибок возникших при обработке файла:</h3>
+    <div class="csv-errors">
+        <ul>
+            <% @error_array.each do |error| %>
+                <li><%= error %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
+
 <%= form_for :dump, :url=>{ :controller => "admin", :action => "parse_maintenance_csv"}, :html => { :multipart => true } do |f| -%>
 <p>
     <%= f.label :dump_file, "Dump File" %>
