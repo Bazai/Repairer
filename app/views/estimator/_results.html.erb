@@ -3,7 +3,7 @@
     <ul>
     <% if !@production_year.all_maintenances.nil? %>
         <% @production_year.all_maintenances.each do |maintenance| %>
-            <li><%= maintenance.description %> - <%= maintenance.labors.count%> Работ, <%= maintenance.parts.count %> Запчастей</li>
+            <li><a><%= maintenance.description %> - <%= maintenance.labors.count%> Работ, <%= maintenance.parts.count %> Запчастей</a></li>
         <% end %>
     <% end %>
     </ul>

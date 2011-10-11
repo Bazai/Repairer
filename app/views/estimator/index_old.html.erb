@@ -13,7 +13,7 @@
     <li><%= collection_select(*@brands_select_params) %></li>
     <li><%= collection_select(*@car_models_select_params) %></li>
     <li><%= collection_select(*@production_years_select_params) %></li>
-    <li><input id="input-mantance" type="text" /></li>
+    <li><input id="input-mantance" name="input-mantance"  type="text" /></li>
     <li><%= submit_tag "Отправить", :id => "submit", :name => "submit" %></li>
     </ol>
 

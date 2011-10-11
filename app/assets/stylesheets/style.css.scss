@@ -135,10 +135,13 @@ ol li{list-style:none;}
  #estimator-form{margin:10px 0; padding:10px 10px 10px 10px;}
  
 #estimator-form ol li{list-style:none; float:left; margin:0 0 10px 0;}
+#estimator-form select {width:120px;}
 #estimator-form .brand-logo{width:120px; height:75px; float:left;}
 
 #input-mantance {width:690px;  font-size:18px; padding:6px;}
 #estimator-form #submit {cursor:pointer; padding:6px; font-size:14px; background: #D1C941; border:1px solid #ccc; -moz-border-radius:6px; margin-left:10px; }
+
+.color-box-medium{display:none;}
 
 /*-----------*/
 /*---forms---*/

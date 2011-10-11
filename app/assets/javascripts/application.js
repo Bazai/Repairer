@@ -16,6 +16,15 @@ $(function() {
 	/*---colorbox login and reg---*/
 	$(".regform").colorbox({href: "/register #new_user", opacity: 0.1, top: 0 });
 	$(".loginform").colorbox({href: "/login #new_user", opacity: 0.1, top: 0 });   
+
+
+	/*---colorbox estimator results---*/
+	 
+	$('#input-mantance').live('click', function() {
+            $.colorbox({inline:true, href: '.maintenances',opacity: 0.1, top: 0});
+           
+	});
+	
      
 	/*---top msg---*/    
 	$('#flash_notice')
