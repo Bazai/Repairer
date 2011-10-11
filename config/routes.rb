@@ -19,13 +19,17 @@ Repairer::Application.routes.draw do
   resources :brands, :car_models, :production_years, :maintenances, :parts, :labors
   get "estimator/index"
   post "estimator/index"
+  get "estimator/showselects"
   get "estimator" => "estimator#index"
+  get "showselects" => "estimator#showselects"
   
   get "admin/index"
   get "admin" => "admin#index"
   
   get "admin/parse_csv"
   post "admin/parse_csv"
+  get "admin/parse_maintenance_csv"
+  post "admin/parse_maintenance_csv"
   # post "estimator" => "estimator#index"
   root :to => "estimator#index"
 

@@ -1,9 +1,13 @@
 # encoding: utf-8
 class Brand < ActiveRecord::Base
+  attr_accessible :name, :description, :logo
+  
   has_many :car_models, :dependent => :destroy
   validates_uniqueness_of :name, :on => :create, :message => "Название должно быть уникальным"
   # accepts_nested_attributes_for :car_models
   accepts_nested_attributes_for :car_models, :allow_destroy => true, :reject_if => proc { |a| a[:name].blank? }
+  
+  mount_uploader :logo, LogoUploader
   
   # Возвращает true или false, в зависимости от того, есть ли у данного брэнда модель
   # с названием car_model_name
@@ -15,3 +19,14 @@ class Brand < ActiveRecord::Base
     arr.include?(car_model_name)
   end
 end
+# == Schema Information
+#
+# Table name: brands
+#
+#  id          :integer         not null, primary key
+#  name        :string(255)
+#  description :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+

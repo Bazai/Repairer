@@ -13,74 +13,27 @@
 
 
 $(function() {
-/*---colorbox login and reg---*/
-$(".regform").colorbox({href: "/register #new_user", opacity: 0.1, top: 0 });
-$(".loginform").colorbox({href: "/login #new_user", opacity: 0.1, top: 0 });   
+	/*---colorbox login and reg---*/
+	$(".regform").colorbox({href: "/register #new_user", opacity: 0.1, top: 0 });
+	$(".loginform").colorbox({href: "/login #new_user", opacity: 0.1, top: 0 });   
      
-/*---top msg---*/    
-$('#flash_notice')
-.append('<span class="close">Закрыть</span>')
-.click(function() {
-$('#flash_notice').toggle('slow');
+	/*---top msg---*/    
+	$('#flash_notice')
+	.append('<span class="close">Закрыть</span>')
+	.click(function() {
+	$('#flash_notice').toggle('slow');
+	});
+
+	$('#add_part').live('click', function(){
+	    console.log($("#existent_parts_ids").val());
+	    $.ajax({
+	        type: "get",
+	        url: "/maintenances/addexpart",
+	        data: "part_id=" + $("#existent_parts_ids").val()
+	    });
+	});
+
+	$('#remove_ex_part').live('click', function(){
+	    $('#remove_ex_part').parent("div").remove();
+	});
 });
-    
-    
-   
-     
-     
-    /*$('#brand').live('change', function(){
-        console.log($("#brand").val());
-        $.ajax({
-            type: "get",
-            url: "showselects",
-            data: "brand_id=" + $("#brand").val()
-        });
-    });
-    $('#car_model').live('change', function(){
-        console.log($("#car_model").val());
-        $.ajax({
-            type: "get",
-            url: "showselects",
-            data: "car_model_id=" + $("#car_model").val() + "&brand_id=" + $("#brand").val()
-        });
-    });
-    $('#production_year').live('change', function(){
-        console.log($("#production_year").val());
-        $.ajax({
-            type: "get",
-            url: "showselects",
-            data: "production_year_id=" + $("#production_year").val() + "&car_model_id=" + $("#car_model").val() + "&brand_id=" + $("#brand").val()
-        });
-<<<<<<< HEAD
-    });
-});
-
-
-
-=======
-    });
-
-    $('#add_part').live('click', function(){
-        console.log($("#existent_parts_ids").val());
-        $.ajax({
-            type: "get",
-            url: "/maintenances/addexpart",
-            data: "part_id=" + $("#existent_parts_ids").val()
-        });
-    });
-
-    $('#remove_ex_part').live('click', function(){
-        $('#remove_ex_part').parent("div").remove();
-    });
-//
-//    $('#remove_brand').live('click', function(){
-//        console.log(543);
-//        console.log($("#brands option:selected").text);
-//        $.ajax({
-//            type: "delete",
-//            url: "/modifications/remove_brand",
-//            data: "brand_id=" + $("#brands option:selected").val
-//        });
-//    });*/
-});
-//>>>>>>> multiform

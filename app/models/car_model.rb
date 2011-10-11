@@ -12,6 +12,7 @@ class CarModel < ActiveRecord::Base
     self.errors.add(:name, "модели должно быть уникально, в рамках родительского брэнда") if self.brand.has_car_model?(self.name)
   end
   
+  scope :ordered, :order => "name ASC"
   
   # Возвращает true или false, в зависимости от того, есть ли у данной модели
   # год производства со значением year
@@ -35,3 +36,15 @@ class CarModel < ActiveRecord::Base
   end
   
 end
+# == Schema Information
+#
+# Table name: car_models
+#
+#  id          :integer         not null, primary key
+#  name        :string(255)
+#  description :string(255)
+#  brand_id    :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+

@@ -3,34 +3,20 @@
 <div id="estimator-form">
 <div class="brand-logo">Brand logo</div>
 <%#= params.inspect %>
-<% if !params[:brand].blank? %>
-<%= "А ты выбрал: " + Brand.find(params[:brand][:id]).name unless params[:brand][:id].empty? %>
-<% else %>
+<%# if !params[:brand].blank? %>
+<%#= "А ты выбрал: " + Brand.find(params[:brand][:id]).name unless params[:brand][:id].empty? %>
+<%# else %>
 
-<% end %>
-<%= form_tag do %>
+<%# end %>
+    
     <ol class="group">
-    <li><%= collection_select(*@brands_select_params) %></li>
-    <li><%= collection_select(*@car_models_select_params) %></li>
-    <li><%= collection_select(*@production_years_select_params) %></li>
-    <li><input id="input-mantance" type="text" value="--вид сервиса--" /></li>
-    <li><%= submit_tag "Рассчитать", :id => "submit", :name => "submit" %></li>
+    <%= render 'chain' %>
     </ol>
-
-<% end -%>
 </div>
+<div class="results">
+    <%#= render :partial => 'results' %>
 </div>
-<% if !@issues.nil? %>
-    <ul>
-    <% if !@issues.blank? %>
-      <% for issue in @issues %>
-        <li><%= issue.description %></li>
-      <% end %>
-    <% else %>
-    <% end %>
-    </ul>
-<% end %>
 
-
-
-
+<div id="slider">
+<%= image_tag("welcome_screen2.jpg", :alt => "rss feed") %>
+</div>

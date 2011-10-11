@@ -7,11 +7,13 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @brands.each do |brand| %>
   <tr>
     <td><%= brand.name %></td>
+    <td><%= image_tag brand.logo_url.to_s unless brand.logo.blank? %></td>
     <td><%= link_to 'Показать', brand %></td>
     <td>
         <% if can? :manage, brand %>

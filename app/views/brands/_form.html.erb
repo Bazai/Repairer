@@ -1,6 +1,8 @@
 # encoding: utf-8
 <%= simple_form_for @brand do |f| %>
         <%= f.input :name, :label => "Имя" %>
+        <%= f.input :description, :label => "Описание" %>
+        <%= f.file_field :logo, :label => 'Логотипчег' %>
         <h3>Модели</h3>
         <%= f.simple_fields_for :car_models do |car_model| %>
             <%= render 'car_model_fields', :f => car_model %>

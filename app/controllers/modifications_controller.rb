@@ -11,7 +11,7 @@ class ModificationsController < ApplicationController
 
       if !params[:edit].blank?
         @brand = Brand.find(params[:edit])
-        @car_models = @brand.car_models
+        @car_models = @brand.car_models.ordered
       end
     end
 
@@ -20,7 +20,7 @@ class ModificationsController < ApplicationController
 
       if !params[:edit].blank?
         @car_model = CarModel.find(params[:edit])
-        @production_years = @car_model.production_years
+        @production_years = @car_model.production_years.ordered
       end
     end
 
