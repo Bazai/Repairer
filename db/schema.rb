@@ -11,15 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-ActiveRecord::Schema.define(:version => 20111003121535) do
-=======
 ActiveRecord::Schema.define(:version => 20111006053520) do
->>>>>>> multiform
-=======
-ActiveRecord::Schema.define(:version => 20111006053520) do
->>>>>>> estimator
 
   create_table "brands", :force => true do |t|
     t.string   "name"
