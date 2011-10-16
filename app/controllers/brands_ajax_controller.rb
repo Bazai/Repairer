@@ -1,5 +1,5 @@
 class BrandsAjaxController < ApplicationController
-
+  
   def get_brands
     @brands = Brand.all(:order => "name")
   end
