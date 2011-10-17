@@ -1,19 +1,27 @@
 # encoding: utf-8
 <div id="estimator-container">
+<div class="brand-logo"><%= image_tag("honda.png") %></div>
 <div id="estimator-form">
-<div class="brand-logo">Brand logo</div>
+<p>Расчет стоимости ремонта вашего автомобиля</p>
 <%#= params.inspect %>
 <%# if !params[:brand].blank? %>
 <%#= "А ты выбрал: " + Brand.find(params[:brand][:id]).name unless params[:brand][:id].empty? %>
 <%# else %>
 
 <%# end %>
-    
     <ol class="group">
     <%= render 'chain' %>
     </ol>
 </div>
 </div>
+
+
+<div id="slider">
+<%= image_tag("welcome_screen2.jpg") %>
+
+</div>
+
+
 <div class="color-box-medium" >
     <%#= render :partial => 'results' %>
 </div>

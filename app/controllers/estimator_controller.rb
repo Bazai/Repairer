@@ -25,7 +25,13 @@ class EstimatorController < ApplicationController
     if !params[:production_year_id].blank?
       @production_year = ProductionYear.find(params[:production_year_id])
     end
+   
+    
   end
+  
+  
+  
+  
   
   def index_old
     @brands = Brand.all

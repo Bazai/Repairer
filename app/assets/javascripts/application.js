@@ -14,8 +14,8 @@
 
 $(function() {
 	/*---colorbox login and reg---*/
-	$(".regform").colorbox({href: "/register #new_user", opacity: 0.1, top: 0 });
-	$(".loginform").colorbox({href: "/login #new_user", opacity: 0.1, top: 0 });   
+	$(".but-registr").colorbox({href: "/register #new_user", opacity: 0.1, top: 0 });
+	$(".but-enter").colorbox({href: "/login #loginform", opacity: 0.1, top: 0 });   
 
 
 	/*---colorbox estimator results---*/
@@ -25,6 +25,14 @@ $(function() {
            
 	});
 	
+	
+	$('.maintenances ul li a').live('click', function() {
+           var str = $(this).text();
+           //alert (str);
+           $('input#input-mantance')
+           .val(str)
+           .colorbox.close();
+           });
      
 	/*---top msg---*/    
 	$('#flash_notice')

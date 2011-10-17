@@ -21,7 +21,7 @@
     <% end %>
 </li>
 <% if ( !@brand.blank? && !@car_model.blank? && !@production_year.blank? ) %>
-    <p>uu<%= @production_year.edit_header  %></p>
+    
 <% end  %>
-<li><input id="input-mantance" type="text" value="--вид сервиса--" /></li>
-<li><%= submit_tag "Рассчитать", :id => "submit", :name => "submit" %></li>
+<li><input id="input-mantance" type="text" value="" /></li>
+<li ><%= submit_tag "Рассчитать", :id => "submit", :name => "submit" %></li>

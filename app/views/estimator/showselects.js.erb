@@ -3,3 +3,5 @@ $("ol.group").html("<%= escape_javascript(render "chain") %>");
 <% if ( !@brand.blank? && !@car_model.blank? && !@production_year.blank? ) %>
     $(".color-box-medium").html("<%= escape_javascript(render "results") %>");
 <% end %>
+
+

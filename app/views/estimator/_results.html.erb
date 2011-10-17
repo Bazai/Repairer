@@ -3,9 +3,18 @@
     <ul>
     <% if !@production_year.all_maintenances.nil? %>
         <% @production_year.all_maintenances.each do |maintenance| %>
-            <li><a><%= maintenance.description %> - <%= maintenance.labors.count%> Работ, <%= maintenance.parts.count %> Запчастей</a></li>
+            <li><a href="#"><%= maintenance.description %> - <%= maintenance.labors.count%> Работ, <%= maintenance.parts.count %> Запчастей </a>
+           
+            
+            </li>
+            
         <% end %>
+        
     <% end %>
+    
+   
+    
+    
     </ul>
 </div>
 
